@@ -13,7 +13,7 @@
           var community_table = $('#community_table tbody');
           $.each(data, function(index, value){
              //console.table(data);
-             community_table.append(`<tr><th scope="row"><div class="media align-items-center"><div class="media-body"><span class="mb-0 text-sm">${value.region_name}</span></div></div></th><td>${value.district_name}</td><td>${value.community_name}</td><td><a href="/view-community/${value.community_id}"><button type="button" class="btn btn-primary">View</button></a><a href="/edit-community/${value.community_id}"><button type="button" class="btn btn-info">Edit</button></a><a href=""><button type="button" class="btn btn-danger">Delete</button></a><a href="/update-price/${value.community_id}"><button type="button" class="btn btn-success">Update Price</button></a></td></tr>`);
+             community_table.append(`<tr><th scope="row"><div class="media align-items-center"><div class="media-body"><span class="mb-0 text-sm">${value.region_name}</span></div></div></th><td>${value.district_name}</td><td>${value.community_name}</td><td><a href="/view-community/${value.community_id}"><button type="button" class="btn btn-primary">View</button></a><a href="/edit-community/${value.community_id}"></a><a href=""><button type="button" class="btn btn-danger">Delete</button></a><a href="/update-price/${value.community_id}"></a></td></tr>`);
           });
        },
        error: function(err){
@@ -126,6 +126,15 @@
         $('#total_amount_paid').val($('#total_weight').val() * $('#unit_price').val());
     });
 
+    $('#edit_sale_submit').click(function(){
+      $('#farmer_transactions_id').val($(location).attr('pathname').substr(11));
+      postData('POST','/edit-forFarmerSale','#edit_sale_form');
+    });
+
+    $('#community_edit_submit').click(function(){
+      $('#community_id').val($(location).attr('pathname').substr(16));
+      postData('POST','/edit-forCommunity','#edit-community-form');
+    });
 
     $('#create-farmer-submit').click(function(){
         postData('POST', '/register_farmer', '#creater-farmer-form');

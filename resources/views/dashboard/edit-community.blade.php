@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -78,39 +78,43 @@
             </div>
 
             <div>
-              <form>
+              <form id="edit-community-form">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="pl-lg-4">
-                 
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Region</label>
 
-                        <select class="form-control form-control-alternative">
-                          <option value="male">Eastern Region</option>
-                          <option value="female">Greater Accra</option>
+                        <select name="region_name" class="form-control form-control-alternative">
+                          <option value="Eastern Region">Eastern Region</option>
+                          <option value="Greater Accra">Greater Accra</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Community</label>
-                        <input type="tel" id="input-first-name" class="form-control form-control-alternative" placeholder="Enter a community" value="Chief Kofi Osei Community">
+                        <label class="form-control-label" for="Community">Community</label>
+                        <input type="tel" id="community_name" name="community_name" class="form-control form-control-alternative" value="{{$community->community_name}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6" style="display:none;">
+                      <div class="form-group">
+                        <label class="form-control-label" for="Community">Community</label>
+                        <input type="text" id="community_id" name="community_id" class="form-control form-control-alternative">
                       </div>
                     </div>
                   </div>
                 </div>
-
               </form>
             </div>
-            
             <div class="card-footer py-4">
-              <a href="#"><button type="button" class="btn btn-success">Save</button></a>
+              <a><button type="button" id="community_edit_submit" class="btn btn-success">Save</button></a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -119,7 +123,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

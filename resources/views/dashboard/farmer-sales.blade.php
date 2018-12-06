@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -80,124 +80,39 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Date</th>
+                    <th scope="col">Created on (Date/Time)</th>
                     <th scope="col">No. of Kilos</th>
                     <th scope="col">Unit Price</th>
                     <th scope="col">Total Amount</th>
+                    <th scope="col">Updated on (Date/Time)</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      12/12/12
-                    </td>
-                    <td>
-                      67
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        $12.50
-                      </span>
-                    </td>
-                    <td>
-                      $6747.25
-                    </td>
-                    <td>
-                      <a href="{{ url('/edit-sale') }}"><button type="button" class="btn btn-success">Edit</button>
+                  @foreach($farmer_transactions as $farmer_transaction)
+                    <tr>
+                      <td>
+                        {{$farmer_transaction->created_at}}
+                      </td>
+                      <td>
+                          {{$farmer_transaction->total_weight}}
+                      </td>
+                      <td>
+                        GHC {{$farmer_transaction->unit_price}}
+                      </td>
+                      <td>
+                        {{$farmer_transaction->total_amount_paid}}
+                      </td>
+                      <td>
+                        {{$farmer_transaction->updated_at}}
+                      </td>
+                      <td>
+                        <a href="{{ url('/edit-sale/'.$farmer_transaction->farmer_transactions_id) }}"><button type="button" class="btn btn-success">Edit</button>
 
-                    </td>
-                    
-                  </tr>
+                      </td>
 
-                  <tr>
-                    <td>
-                      12/12/12
-                    </td>
-                    <td>
-                      67
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        $12.50
-                      </span>
-                    </td>
-                    <td>
-                      $6747.25
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-success">Edit</button>
-
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td>
-                      12/12/12
-                    </td>
-                    <td>
-                      67
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        $12.50
-                      </span>
-                    </td>
-                    <td>
-                      $6747.25
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-success">Edit</button>
-
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td>
-                      12/12/12
-                    </td>
-                    <td>
-                      67
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        $12.50
-                      </span>
-                    </td>
-                    <td>
-                      $6747.25
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-success">Edit</button>
-
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td>
-                      12/12/12
-                    </td>
-                    <td>
-                      67
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        $12.50
-                      </span>
-                    </td>
-                    <td>
-                      $6747.25
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-success">Edit</button>
-
-                    </td>
-                    
-                  </tr>
-                  
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -229,7 +144,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -238,7 +153,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

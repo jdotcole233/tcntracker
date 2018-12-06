@@ -24,7 +24,6 @@ class farmerController extends Controller
         return response()->json("Sale created successfully");
     }
 
-
     public function viewFarmer($id){
       $farmer = Farmer::where('farmer_id', $id)->first();
     	return view("dashboard.view-farmer", compact('farmer'));
@@ -45,5 +44,28 @@ class farmerController extends Controller
           'phone_number' => $request->phone_number,
         ]);
         return response()->json("Editted successfully");
+    }
+
+
+    // Farmer sales
+    public function farmerSales($id){
+      $farmer_transactions = Farmer_transaction::where('farmersfarmer_id', $id)->get();
+      return view("dashboard.farmer-sales", compact('farmer_transactions'));
+    }
+
+    public function editSale($id){
+      $farmer_sale = Farmer_transaction::where('farmer_transactions_id', $id)->first();
+      return view("dashboard.edit-sale", compact('farmer_sale'));
+    }
+
+    public function editSaleDetails(Request $request){
+
+        Farmer_transaction::find($request->farmer_transactions_id)->update([
+          'unit_price' => $request->unit_price,
+          'total_weight' => $request->total_weight,
+          'total_amount_paid' => $request->total_amount_paid
+        ]);
+
+        return response()->json("sale update successfully");
     }
 }

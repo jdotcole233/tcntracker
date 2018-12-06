@@ -41,15 +41,12 @@ Route::get('/create-farmer', 'PagesController@createFarmer');
 
 Route::get('/create-sale/{id}', 'PagesController@createSale');
 
-Route::get('/edit-sale', 'PagesController@editSale');
 
-Route::get('/farmer-sales', 'PagesController@farmerSales');
 
 Route::get('/communities', 'PagesController@communities');
 
 Route::get('/create-community', 'PagesController@createCommunity');
 
-Route::get('/edit-community', 'PagesController@editCommunity');
 
 Route::get('/update-price', 'PagesController@updatePrice');
 
@@ -63,6 +60,9 @@ Route::get('/update-price', 'PagesController@updatePrice');
 Route::post('/register_community','communityController@register_community');
 Route::get('/fetch_communities','communityController@list_out_communities');
 Route::get('/view-community/{id}', 'communityController@list_community');
+Route::get('/edit-community/{id}', 'communityController@editCommunity');
+Route::post('/edit-forCommunity', 'communityController@update_community_details');
+
 
 
 //Buyer controller functions
@@ -80,3 +80,8 @@ Route::post('/create-sale-forfarmer', 'farmerController@create_sale');
 Route::get('/view-farmer/{id}', 'farmerController@viewFarmer');
 Route::get('/edit-farmer/{id}', 'farmerController@editFarmer');
 Route::post('/edit-forfarmer','farmerController@editFarmerDetails');
+
+//farmer sales functions in farmerController
+Route::get('/farmer-sales/{id}', 'farmerController@farmerSales');
+Route::get('/edit-sale/{id}', 'farmerController@editSale');
+Route::post('/edit-forFarmerSale', 'farmerController@editSaleDetails');

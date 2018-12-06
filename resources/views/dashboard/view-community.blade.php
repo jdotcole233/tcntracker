@@ -114,7 +114,7 @@
 
             <div class="card-footer py-4">
               <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-primary">Update price</button></a>
-              <a href="{{ url('/edit-community') }}"><button type="button" class="btn btn-success">Edit community</button></a>
+              <a href="{{ url('/edit-community/'.$community->community_id) }}"><button type="button" class="btn btn-success">Edit community</button></a>
             </div>
           </div>
         </div>

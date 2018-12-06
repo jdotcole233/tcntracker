@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Farmer_transaction extends Model
 {
+    protected $primaryKey = 'farmer_transactions_id';
     protected $fillable = [
       'unit_price',
       'total_weight',
