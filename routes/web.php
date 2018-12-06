@@ -31,17 +31,15 @@ Route::get('/buyer-profile', 'PagesController@buyerProfile');
 
 Route::get('/create-buyer', 'PagesController@createBuyer');
 
-Route::get('/edit-buyer', 'PagesController@editBuyer');
 
 Route::get('/farmers', 'PagesController@farmers');
 
 Route::get('/create-farmer', 'PagesController@createFarmer');
 
-Route::get('/view-farmer', 'PagesController@viewFarmer');
+// Route::get('/view-farmer/{id}', 'PagesController@viewFarmer');
 
-Route::get('/edit-farmer', 'PagesController@editFarmer');
 
-Route::get('/create-sale', 'PagesController@createSale');
+Route::get('/create-sale/{id}', 'PagesController@createSale');
 
 Route::get('/edit-sale', 'PagesController@editSale');
 
@@ -49,10 +47,36 @@ Route::get('/farmer-sales', 'PagesController@farmerSales');
 
 Route::get('/communities', 'PagesController@communities');
 
-Route::get('/view-community', 'PagesController@viewCommunity');
-
 Route::get('/create-community', 'PagesController@createCommunity');
 
 Route::get('/edit-community', 'PagesController@editCommunity');
 
 Route::get('/update-price', 'PagesController@updatePrice');
+
+
+
+
+
+
+
+// Community controller functions
+Route::post('/register_community','communityController@register_community');
+Route::get('/fetch_communities','communityController@list_out_communities');
+Route::get('/view-community/{id}', 'communityController@list_community');
+
+
+//Buyer controller functions
+Route::post('/register_buyer','buyerController@register_buyer');
+Route::get('/fetch_buyers','buyerController@list_out_buyers');
+Route::get('/edit-buyer/{id}', 'buyerController@editBuyer');
+Route::post('/edit-forBuyer', 'buyerController@editBuyerDetails');
+
+
+
+//farmer controller functions
+Route::post('/register_farmer','farmerController@register_farmer');
+Route::get('/fetch_farmers','farmerController@list_out_farmers');
+Route::post('/create-sale-forfarmer', 'farmerController@create_sale');
+Route::get('/view-farmer/{id}', 'farmerController@viewFarmer');
+Route::get('/edit-farmer/{id}', 'farmerController@editFarmer');
+Route::post('/edit-forfarmer','farmerController@editFarmerDetails');

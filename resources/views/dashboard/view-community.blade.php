@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -80,23 +80,29 @@
             <div>
               <form>
                 <div class="pl-lg-4">
-                 
+
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Region</label>
-                        <h3>Eastern Region</h3>
+                        <h3>{{$community->region_name}}</h3>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Community</label>
-                        <h3>Chief Kofi Osei Community</h3>
+                        <h3>{{$community->community_name}}</h3>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Price ($)</label>
+                        <label class="form-control-label" for="input-first-name">District</label>
+                        <h3>{{$community->district_name}}</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Current Price ($)</label>
                         <h3>25</h3>
                       </div>
                     </div>
@@ -105,7 +111,7 @@
 
               </form>
             </div>
-            
+
             <div class="card-footer py-4">
               <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-primary">Update price</button></a>
               <a href="{{ url('/edit-community') }}"><button type="button" class="btn btn-success">Edit community</button></a>
@@ -113,7 +119,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -122,7 +128,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

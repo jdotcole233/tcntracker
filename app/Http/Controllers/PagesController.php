@@ -18,24 +18,20 @@ class PagesController extends Controller
     public function createBuyer(){
     	return view("dashboard.create-buyer");
     }
-    public function editBuyer(){
-    	return view("dashboard.edit-buyer");
-    }
+
     public function farmers(){
     	return view("dashboard.farmers");
     }
     public function farmerSales(){
     	return view("dashboard.farmer-sales");
     }
-    public function viewFarmer(){
-    	return view("dashboard.view-farmer");
-    }
+    // public function viewFarmer(){
+    // 	return view("dashboard.view-farmer");
+    // }
     public function createFarmer(){
     	return view("dashboard.create-farmer");
     }
-    public function editFarmer(){
-    	return view("dashboard.edit-farmer");
-    }
+
     public function createSale(){
     	return view("dashboard.create-sale");
     }

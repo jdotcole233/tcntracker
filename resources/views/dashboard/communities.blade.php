@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -77,119 +77,18 @@
               <h3 class="mb-0">All Communities <a href="{{ url('create-community') }}"><button type="button" class="btn btn-success float-right">Add community</button></a></h3>
             </div>
             <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+              <table class="table align-items-center table-flush" id="community_table">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Region</th>
+                    <th scope="col">District</th>
                     <th scope="col">Community</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Community Region</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Community Name
-                    </td>
-                    <td>
-                      <a href="{{ url('/view-community') }}"><button type="button" class="btn btn-primary">View</button></a>
-                      <a href="{{ url('/edit-community') }}"><button type="button" class="btn btn-info">Edit</button></a>
-                      <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
-                      <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-success">Update Price</button></a>
+                  <!-- Community list goes here  -->
 
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Community Region</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Community Name
-                    </td>
-                    <td>
-                      <a href="{{ url('/view-community') }}"><button type="button" class="btn btn-primary">View</button></a>
-                      <a href="{{ url('/edit-community') }}"><button type="button" class="btn btn-info">Edit</button></a>
-                      <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
-                      <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-success">Update Price</button></a>
-
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Community Region</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Community Name
-                    </td>
-                    <td>
-                      <a href="{{ url('/view-community') }}"><button type="button" class="btn btn-primary">View</button></a>
-                      <a href="{{ url('/edit-community') }}"><button type="button" class="btn btn-info">Edit</button></a>
-                      <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
-                      <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-success">Update Price</button></a>
-
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Community Region</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Community Name
-                    </td>
-                    <td>
-                      <a href="{{ url('/view-community') }}"><button type="button" class="btn btn-primary">View</button></a>
-                      <a href="{{ url('/edit-community') }}"><button type="button" class="btn btn-info">Edit</button></a>
-                      <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
-                      <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-success">Update Price</button></a>
-
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Community Region</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Community Name
-                    </td>
-                    <td>
-                      <a href="{{ url('/view-community') }}"><button type="button" class="btn btn-primary">View</button></a>
-                      <a href="{{ url('/edit-community') }}"><button type="button" class="btn btn-info">Edit</button></a>
-                      <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
-                      <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-success">Update Price</button></a>
-
-                    </td>
-                    
-                  </tr>
-
-
-                  
                 </tbody>
               </table>
             </div>
@@ -221,7 +120,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -230,7 +129,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

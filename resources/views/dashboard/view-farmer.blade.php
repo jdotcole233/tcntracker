@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -84,13 +84,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Full Name</label>
-                        <h3>Precious Esi</h3>
+                        <h3>{{$farmer->first_name}} {{$farmer->other_name}} {{$farmer->last_name}}</h3>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Location</label>
-                        <h3>Accra</h3>
+                        <h3>{{$farmer->location}}</h3>
                       </div>
                     </div>
                   </div>
@@ -99,13 +99,13 @@
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Gender</label>
 
-                        <h3>Female</h3>
+                        <h3>{{$farmer->gender}}</h3>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Phone Number</label>
-                        <h3>0240394736</h3>
+                        <h3>{{$farmer->phone_number}}</h3>
                       </div>
                     </div>
                   </div>
@@ -113,14 +113,14 @@
 
               </form>
             </div>
-            
+
             <div class="card-footer py-4">
-              <a href="{{ url('/edit-farmer') }}"><button type="button" class="btn btn-success">Edit Profile</button></a>
+              <a href="{{ url('/edit-farmer/'.$farmer->farmer_id) }}"><button type="button" class="btn btn-success">Edit Profile</button></a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -129,7 +129,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>
