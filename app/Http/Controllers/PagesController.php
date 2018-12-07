@@ -44,9 +44,7 @@ class PagesController extends Controller
     	return view("dashboard.create-farmer");
     }
 
-    public function createSale(){
-    	return view("dashboard.create-sale");
-    }
+
 
     public function communities(){
     	return view("dashboard.communities");

@@ -39,9 +39,6 @@ Route::get('/create-farmer', 'PagesController@createFarmer');
 // Route::get('/view-farmer/{id}', 'PagesController@viewFarmer');
 
 
-Route::get('/create-sale/{id}', 'PagesController@createSale');
-
-
 
 Route::get('/communities', 'PagesController@communities');
 
@@ -80,6 +77,8 @@ Route::post('/create-sale-forfarmer', 'farmerController@create_sale');
 Route::get('/view-farmer/{id}', 'farmerController@viewFarmer');
 Route::get('/edit-farmer/{id}', 'farmerController@editFarmer');
 Route::post('/edit-forfarmer','farmerController@editFarmerDetails');
+Route::get('/create-sale/{id}', 'farmerController@createSale');
+
 
 //farmer sales functions in farmerController
 Route::get('/farmer-sales/{id}', 'farmerController@farmerSales');

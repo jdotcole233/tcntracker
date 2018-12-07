@@ -68,4 +68,9 @@ class farmerController extends Controller
 
         return response()->json("sale update successfully");
     }
+
+    public function createSale($id) {
+      $farmer = Farmer::where('farmer_id', $id)->first();
+      return view("dashboard.create-sale", compact('farmer'));
+    }
 }
