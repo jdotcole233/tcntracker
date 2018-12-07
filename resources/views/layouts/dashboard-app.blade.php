@@ -16,6 +16,7 @@
   <link href="{{ asset('/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="{{ asset('/assets/css/argon.css?v=1.0.0') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('/jquery-validation/demo/css/screen.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css"/>
 
@@ -182,7 +183,8 @@
   <script src="{{ asset('/assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
   <!-- Argon JS -->
   <script src="{{ asset('/assets/js/argon.js?v=1.0.0') }}"></script>
-  <script type="text/javascript" src="{{asset('js/tcntrackerjs.js')}}">
+  <script type="text/javascript" src="{{asset('js/tcntrackerjs.js')}}"></script>
+  <script type="text/javascript" src="{{asset('/jquery-validation/dist/jquery.validate.min.js')}}"></script>
 
   </script>
 </body>

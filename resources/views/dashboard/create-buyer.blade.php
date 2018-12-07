@@ -85,13 +85,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" class="form-control form-control-alternative" placeholder="Enter first name">
+                        <input type="text" id="first_name" name="first_name" class="form-control form-control-alternative" placeholder="Enter first name" required>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" class="form-control form-control-alternative" placeholder="Enter last name">
+                        <input type="text" id="last_name" name="last_name" class="form-control form-control-alternative" placeholder="Enter last name" required>
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -112,17 +112,17 @@
                       <div class="form-group">
                         <label class="form-control-label" for="gender">Gender</label>
 
-                        <select name="gender" class="form-control form-control-alternative">
+                        <select name="gender" class="form-control form-control-alternative" required>
                           <option value="">Choose</option>
                           <option value="Male">Male</option>
-                          <option value="Female" selected="selected">Female</option>
+                          <option value="Female">Female</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="phone_number">Phone Number</label>
-                        <input type="tel" id="phone_number" name="phone_number" class="form-control form-control-alternative" placeholder="Enter a phone number">
+                        <input type="tel" id="phone_number" name="phone_number" class="form-control form-control-alternative" placeholder="Enter a phone number" required>
                       </div>
                     </div>
                     <div class="col-lg-6" style="display:none;">
