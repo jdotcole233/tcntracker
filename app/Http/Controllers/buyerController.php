@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Buyer;
+use App\Buyer_community;
 
 class buyerController extends Controller
 {
     public function register_buyer(Request $request){
-        Buyer::create($request->all());
+        $buyer_id = Buyer::create($request->all())->value('buyer_id');
+        Buyer_community::create([
+          'communitiescommunity_id' => $request->communitiescommunity_id,
+          'buyersbuyer_id' => $buyer_id
+        ]);
         return response()->json("Buyer added successfully");
     }
 
@@ -33,5 +38,6 @@ class buyerController extends Controller
         ]);
         return response()->json("Editted Buyer successfully");
     }
+
 
 }

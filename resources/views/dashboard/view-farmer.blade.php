@@ -90,7 +90,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Location</label>
-                        <h3>{{$farmer->location}}</h3>
+                        <h3>{{App\Community::where('community_id', $farmer->communitiescommunity_id)->first()->value('community_name')}}</h3>
                       </div>
                     </div>
                   </div>

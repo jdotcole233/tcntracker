@@ -59,9 +59,6 @@
                   </div>
                 </th>
                 <td>
-                  ${value.location}
-                </td>
-                <td>
                   <span class="badge badge-dot mr-4">
                     ${value.gender}
                   </span>

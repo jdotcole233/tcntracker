@@ -103,15 +103,15 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="location">Location</label>
-                        <input type="text" name="location" class="form-control form-control-alternative" value="1" readonly>
+                        <select name="communitiescommunity_id" class="form-control form-control-alternative">
+                          <option value="">Choose</option>
+                          @foreach(App\Community::all() as $community)
+                          <option value="{{$community->community_id}}">{{$community->community_name}}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
-                    <div class="col-lg-6" style="display:none;">
-                      <div class="form-group">
-                        <label class="form-control-label" for="communitiescommunity_id">Comunity ID</label>
-                        <input type="text" name="communitiescommunity_id" class="form-control form-control-alternative" value="1" readonly>
-                      </div>
-                    </div>
+
                   </div>
                   <div class="row">
                     <div class="col-lg-6">

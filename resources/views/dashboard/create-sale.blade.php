@@ -91,7 +91,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="unit_price">Unit Price (GHC)</label>
-                        <input type="number" id="unit_price" name="unit_price" class="form-control form-control-alternative" value="50" readonly>
+                        <input type="number" id="unit_price" name="unit_price" class="form-control form-control-alternative" value="{{DB::table('community_prices')->join('farmers','community_prices.communitiescommunity_id','farmers.communitiescommunity_id')->where('farmers.farmer_id',$farmer->farmer_id)->latest('community_prices.created_at')->value('current_price')}}" readonly>
                       </div>
                     </div>
                   </div>

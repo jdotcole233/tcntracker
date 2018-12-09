@@ -154,9 +154,6 @@
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
-              <button type="button" class="btn btn-info" id="alert">View Alert</button>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="">
               <i class="ni ni-spaceship"></i> About Us
             </a>
@@ -194,16 +191,6 @@
   <script type="text/javascript" src="{{asset('js/tcntrackerjs.js')}}"></script>
   <script type="text/javascript" src="{{asset('/jquery-validation/dist/jquery.validate.min.js')}}"></script>
 
-<script type="text/javascript">
-  // $('#alert').click(function(){
-  //     Swal({
-  //       position: 'center',
-  //       type: 'success',
-  //       title: 'Your work has been saved',
-  //       showConfirmButton: false
-  //     })
-  // });
-</script>
 
 
 </body>
