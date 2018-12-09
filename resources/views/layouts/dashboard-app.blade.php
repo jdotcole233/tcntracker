@@ -20,7 +20,12 @@
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css"/>
 
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
+
+  <script src="{{ asset('/js/sweetalert2.all.min.js') }}"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
 </head>
 
 <body>
@@ -145,9 +150,12 @@
         <!-- Divider -->
         <hr class="my-3">
         <!-- Heading -->
-        <h6 class="navbar-heading text-muted">Documentation</h6>
+        <h6 class="navbar-heading text-muted">More</h6>
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
+          <li class="nav-item">
+              <button type="button" class="btn btn-info" id="alert">View Alert</button>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="">
               <i class="ni ni-spaceship"></i> About Us
@@ -186,7 +194,18 @@
   <script type="text/javascript" src="{{asset('js/tcntrackerjs.js')}}"></script>
   <script type="text/javascript" src="{{asset('/jquery-validation/dist/jquery.validate.min.js')}}"></script>
 
-  </script>
+<script type="text/javascript">
+  $('#alert').click(function(){
+      Swal({
+        position: 'center',
+        type: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false
+      })
+  });
+</script>
+
+
 </body>
 
 </html>

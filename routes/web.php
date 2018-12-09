@@ -39,13 +39,16 @@ Route::get('/create-farmer', 'PagesController@createFarmer');
 // Route::get('/view-farmer/{id}', 'PagesController@viewFarmer');
 
 
-
 Route::get('/communities', 'PagesController@communities');
 
 Route::get('/create-community', 'PagesController@createCommunity');
 
 
 Route::get('/update-price', 'PagesController@updatePrice');
+
+Route::get('/add-price', 'PagesController@addPrice');
+
+Route::get('/community-prices', 'PagesController@communityPrices');
 
 
 

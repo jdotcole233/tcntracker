@@ -7,7 +7,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ url('/farmers') }}">Community Details</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ url('/farmers') }}">Add Community Price</a>
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-
+          
         </div>
       </div>
     </div>
@@ -74,36 +74,18 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">Community Profile</h3>
+              <h3 class="mb-0">Add price</h3>
             </div>
 
             <div>
               <form>
                 <div class="pl-lg-4">
-
+                 
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Region</label>
-                        <h3>{{$community->region_name}}</h3>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Community</label>
-                        <h3>{{$community->community_name}}</h3>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">District</label>
-                        <h3>{{$community->district_name}}</h3>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Current Price ($)</label>
-                        <h3>25</h3>
+                        <label class="form-control-label" for="input-first-name">Price ($)</label>
+                        <input type="tel" id="input-first-name" class="form-control form-control-alternative" placeholder="Enter a value">
                       </div>
                     </div>
                   </div>
@@ -111,17 +93,14 @@
 
               </form>
             </div>
-
+            
             <div class="card-footer py-4">
-              <a href="{{ url('/add-price') }}"><button type="button" class="btn btn-info">Add price</button></a>
-              <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-primary">Update price</button></a>
-              <a href="{{ url('/community-prices') }}"><button type="button" class="btn btn-danger">View prices</button></a>
-              <a href="{{ url('/edit-community/'.$community->community_id) }}"><button type="button" class="btn btn-success">Edit community</button></a>
+              <a href="#"><button type="button" class="btn btn-success">Submit</button></a>
             </div>
           </div>
         </div>
       </div>
-
+      
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -130,7 +109,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-
+          
         </div>
       </footer>
     </div>

@@ -7,7 +7,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ url('/farmers') }}">Community Details</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="">Community Prices</a>
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -74,49 +74,60 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">Community Profile</h3>
+              <h3 class="mb-0">Prices</h3>
             </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12/12/2018</td>
+                    <td>65</td>
+                  </tr>
 
-            <div>
-              <form>
-                <div class="pl-lg-4">
+                  <tr>
+                    <td>12/12/2018</td>
+                    <td>65</td>
+                  </tr>
 
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Region</label>
-                        <h3>{{$community->region_name}}</h3>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Community</label>
-                        <h3>{{$community->community_name}}</h3>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">District</label>
-                        <h3>{{$community->district_name}}</h3>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Current Price ($)</label>
-                        <h3>25</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  <tr>
+                    <td>12/12/2018</td>
+                    <td>65</td>
+                  </tr>
+                  <!-- Community list goes here  -->
 
-              </form>
+                </tbody>
+              </table>
             </div>
-
             <div class="card-footer py-4">
-              <a href="{{ url('/add-price') }}"><button type="button" class="btn btn-info">Add price</button></a>
-              <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-primary">Update price</button></a>
-              <a href="{{ url('/community-prices') }}"><button type="button" class="btn btn-danger">View prices</button></a>
-              <a href="{{ url('/edit-community/'.$community->community_id) }}"><button type="button" class="btn btn-success">Edit community</button></a>
+              <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">
+                      <i class="fas fa-angle-left"></i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      <i class="fas fa-angle-right"></i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
