@@ -44,11 +44,8 @@ Route::get('/communities', 'PagesController@communities');
 Route::get('/create-community', 'PagesController@createCommunity');
 
 
-Route::get('/update-price', 'PagesController@updatePrice');
 
-Route::get('/add-price', 'PagesController@addPrice');
 
-Route::get('/community-prices', 'PagesController@communityPrices');
 
 
 
@@ -62,6 +59,13 @@ Route::get('/fetch_communities','communityController@list_out_communities');
 Route::get('/view-community/{id}', 'communityController@list_community');
 Route::get('/edit-community/{id}', 'communityController@editCommunity');
 Route::post('/edit-forCommunity', 'communityController@update_community_details');
+
+Route::get('/add-price/{id}', 'PagesController@addPrice');
+Route::post('/add_priceto_community', 'communityController@add_priceto_community');
+Route::get('/community-prices/{id}', 'communityController@communityPrices');
+Route::get('/update-price/{id}', 'communityController@updatePrice');
+Route::post('/update_current_price', 'communityController@update_current_prices');
+
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Community;
+use App\Community_price;
 
 class communityController extends Controller
 {
@@ -34,4 +35,29 @@ class communityController extends Controller
         ]);
         return response()->json("Updated successfully");
     }
+
+
+    public function add_priceto_community(Request $request){
+      Community_price::create($request->all());
+      return response()->json("Community Price Added successfully!!");
+    }
+
+    public function communityPrices($id){
+      $community_prices = Community_price::where('communitiescommunity_id', $id)->orderBy('created_at','desc')->get();
+      return view("dashboard.view-community-prices", compact('community_prices'));
+    }
+
+    public function updatePrice($id){
+      $community_price = Community_price::where('community_price_id', $id)->first();
+      return view("dashboard.update-price", compact('community_price'));
+    }
+
+    public function update_current_prices(Request $request){
+        Community_price::find($request->community_price_id)->update([
+            'current_price' => $request->current_price
+        ]);
+
+        return response()->json("Updated successfully");
+    }
+
 }

@@ -103,7 +103,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Current Price ($)</label>
-                        <h3>25</h3>
+                        <h3>{{DB::table('community_prices')->latest()->value('current_price')}}</h3>
                       </div>
                     </div>
                   </div>
@@ -113,9 +113,8 @@
             </div>
 
             <div class="card-footer py-4">
-              <a href="{{ url('/add-price') }}"><button type="button" class="btn btn-info">Add price</button></a>
-              <a href="{{ url('/update-price') }}"><button type="button" class="btn btn-primary">Update price</button></a>
-              <a href="{{ url('/community-prices') }}"><button type="button" class="btn btn-danger">View prices</button></a>
+              <a href="{{ url('/add-price/'.$community->community_id) }}"><button type="button" class="btn btn-info">Add price</button></a>
+              <a href="{{ url('/community-prices/'. $community->community_id) }}"><button type="button" class="btn btn-danger" id="list_community_prices">View prices</button></a>
               <a href="{{ url('/edit-community/'.$community->community_id) }}"><button type="button" class="btn btn-success">Edit community</button></a>
             </div>
           </div>

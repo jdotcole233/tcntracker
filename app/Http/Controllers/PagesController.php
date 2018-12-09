@@ -56,15 +56,11 @@ class PagesController extends Controller
     	return view("dashboard.create-community");
     }
 
-    public function updatePrice(){
-    	return view("dashboard.update-price");
-    }
+
     public function addPrice(){
       return view("dashboard.add-price");
     }
-    public function communityPrices(){
-      return view("dashboard.view-community-prices");
-    }
+
     public function signin(){
     	return view("auth.signin");
     }

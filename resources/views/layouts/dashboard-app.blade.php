@@ -177,9 +177,9 @@
   </nav>
 
 
-
             @yield('content')
 
+            <img id="formLoader" style=" display: none; position: absolute; top:50%;left:50%;z-index:1;" src="{{asset('/assets/img/brand/loader.gif')}}" alt="Loader">
 
 
   <!-- Argon Scripts -->
@@ -195,14 +195,14 @@
   <script type="text/javascript" src="{{asset('/jquery-validation/dist/jquery.validate.min.js')}}"></script>
 
 <script type="text/javascript">
-  $('#alert').click(function(){
-      Swal({
-        position: 'center',
-        type: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false
-      })
-  });
+  // $('#alert').click(function(){
+  //     Swal({
+  //       position: 'center',
+  //       type: 'success',
+  //       title: 'Your work has been saved',
+  //       showConfirmButton: false
+  //     })
+  // });
 </script>
 
 

@@ -77,29 +77,25 @@
               <h3 class="mb-0">Prices</h3>
             </div>
             <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+              <table class="table align-items-center table-flush" id="comunityprices_table">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Date</th>
+                    <th scope="col">Created on (Date/Time)</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Updated on (Date/Time)</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($community_prices as $community_price)
                   <tr>
-                    <td>12/12/2018</td>
-                    <td>65</td>
+                    <td>{{$community_price->created_at}}</td>
+                    <td>{{$community_price->current_price}}</td>
+                    <td>{{$community_price->updated_at}}</td>
+                    <td><a href="{{ url('/update-price/'.$community_price->community_price_id) }}"><button type="button" class="btn btn-primary update_price_btn">Update price</button></a></td>
                   </tr>
-
-                  <tr>
-                    <td>12/12/2018</td>
-                    <td>65</td>
-                  </tr>
-
-                  <tr>
-                    <td>12/12/2018</td>
-                    <td>65</td>
-                  </tr>
-                  <!-- Community list goes here  -->
+                  @endforeach
+                  <!-- Community price list goes here  -->
 
                 </tbody>
               </table>

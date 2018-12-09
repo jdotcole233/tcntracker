@@ -1,5 +1,5 @@
     $(document).ready(function(){
-
+        let community_addprice_id;
         $('#submit_community_forms').click(function(){
           postData('POST', '/register_community','#create-community-form');
         });
@@ -141,8 +141,20 @@
     });
 
 
+    $('#add_community_price').click(function(){
+      $('#communitiescommunity_id').val($(location).attr('pathname').substr(11));
+      postData('POST','/add_priceto_community','#community_price_forms');
+    });
 
 
+    $('.update_price_btn').click(function(){
+      console.log();
+    });
+
+
+    $('#community_price_update_btn').click(function(){
+        postData('POST','/update_current_price','#update_community_price_form');
+    });
 
 
 
@@ -152,17 +164,35 @@
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
           });
+          $(this).ajaxStart(function(){
+            $('#formLoader').css('display','block');
+          });
 
+          $(this).ajaxComplete(function(){
+            $('#formLoader').css('display','none');
+          });
           $.ajax({
               type: method,
               url: url,
               data:$(form_data).serialize(),
               success: function(data){
                   console.log(data);
+                  Swal({
+                    position: 'center',
+                    type: 'success',
+                    title: data,
+                    showCloseButton: true,
+                    showConfirmButton: false
+                  })
                   $(form_data).trigger('reset');
               },
               error: function(err){
-                console.log("Something went wrong");
+                Swal({
+                  type: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!',
+                  footer: '<a href>Refresh the page and try again!</a>'
+                })
               }
           });
       }
