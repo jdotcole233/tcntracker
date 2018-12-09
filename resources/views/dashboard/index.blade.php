@@ -93,7 +93,13 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Total Farmers</h5>
-                      <span class="h2 font-weight-bold mb-0">4</span>
+                      <span class="h2 font-weight-bold mb-0">
+                        @if($total_farmers != 0)
+                            {{$total_farmers}}
+                        @else
+                            0
+                        @endif
+                      </span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -113,8 +119,10 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Total Kilos Bought</h5>
-                      <span class="h2 font-weight-bold mb-0">7</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total weight bought</h5>
+                      <span class="h2 font-weight-bold mb-0">
+                      45
+                      </span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -135,7 +143,13 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Total Buyers</h5>
-                      <span class="h2 font-weight-bold mb-0">17</span>
+                      <span class="h2 font-weight-bold mb-0">
+                        @if($total_buyers != 0)
+                            {{$total_buyers}}
+                        @else
+                            0
+                        @endif
+                      </span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -438,7 +452,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

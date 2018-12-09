@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
               <h3 class="mb-0">All Farmers</h3>
             </div>
             <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+              <table class="table align-items-center table-flush" id="allfarmers">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Full Name</th>
@@ -88,141 +88,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Precious Esi</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Techiman
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        Female
-                      </span>
-                    </td>
-                    <td>
-                      0249304938
-                    </td>
-                    <td>
-                      <a href="{{ url('/farmer-sales') }}"><button type="button" class="btn btn-primary">View sales</button></a>
-                      <a href="{{ url('/edit-farmer') }}"><button type="button" class="btn btn-success">Edit Farmer</button></a>
-
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Precious Esi</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Techiman
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        Female
-                      </span>
-                    </td>
-                    <td>
-                      0249304938
-                    </td>
-                    <td>
-                      <a href="{{ url('/farmer-sales') }}"><button type="button" class="btn btn-primary">View sales</button></a>
-                      <a href="{{ url('/edit-farmer') }}"><button type="button" class="btn btn-success">Edit Farmer</button></a>
-
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Precious Esi</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Techiman
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        Female
-                      </span>
-                    </td>
-                    <td>
-                      0249304938
-                    </td>
-                    <td>
-                      <a href="{{ url('/farmer-sales') }}"><button type="button" class="btn btn-primary">View sales</button></a>
-                      <a href="{{ url('/edit-farmer') }}"><button type="button" class="btn btn-success">Edit Farmer</button></a>
-
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Precious Esi</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Techiman
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        Female
-                      </span>
-                    </td>
-                    <td>
-                      0249304938
-                    </td>
-                    <td>
-                      <a href="{{ url('/farmer-sales') }}"><button type="button" class="btn btn-primary">View sales</button></a>
-                      <a href="{{ url('/edit-farmer') }}"><button type="button" class="btn btn-success">Edit Farmer</button></a>
-
-                    </td>
-                    
-                  </tr>
-
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Precious Esi</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      Techiman
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        Female
-                      </span>
-                    </td>
-                    <td>
-                      0249304938
-                    </td>
-                    <td>
-                      <a href="{{ url('/farmer-sales') }}"><button type="button" class="btn btn-primary">View sales</button></a>
-                      <a href="{{ url('/edit-farmer') }}"><button type="button" class="btn btn-success">Edit Farmer</button></a>
-
-                    </td>
-                    
-                  </tr>
-
+                    <!-- All farmer details for sales goes here -->
                 </tbody>
               </table>
             </div>
@@ -254,7 +120,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -263,7 +129,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -78,43 +78,51 @@
             </div>
 
             <div>
-              <form>
+              <form id="edit_sale_form">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-username">No. of Kilos</label>
-                        <input type="number" id="input-username" class="form-control form-control-alternative" placeholder="Enter a value" value="67">
+                        <label class="form-control-label" for="Total Weight">Total weight</label>
+                        <input type="number" id="total_weight" name="total_weight" class="form-control form-control-alternative" value="{{$farmer_sale->total_weight}}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-email">Unit Price ($)</label>
-                        <input type="number" class="form-control form-control-alternative" placeholder="Enter a value" value="12.50">
+                        <label class="form-control-label" for="Unit price">Unit Price (GHC)</label>
+                        <input type="number" id="unit_price" name="unit_price" class="form-control form-control-alternative" value="{{$farmer_sale->unit_price}}">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Total Amount ($)</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Enter a value" value="6747.25">
+                        <label class="form-control-label" for="Total Amount">Total Amount (GHC)</label>
+                        <input type="text" id="total_amount_paid" name="total_amount_paid" class="form-control form-control-alternative" value="{{$farmer_sale->total_amount_paid}}">
                       </div>
                     </div>
-                    
+                  </div>
+                  <div class="row" style="display:none;">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="Transaction">Transaction ID</label>
+                        <input type="hidden" id="farmer_transactions_id" name="farmer_transactions_id" class="form-control form-control-alternative">
+                      </div>
+                    </div>
                   </div>
                 </div>
 
               </form>
             </div>
-            
+
             <div class="card-footer py-4">
-              <a href="#"><button type="button" class="btn btn-success">Submit</button></a>
+              <a><button type="button" id="edit_sale_submit" class="btn btn-success">Submit</button></a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -123,7 +131,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

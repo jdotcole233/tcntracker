@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -78,49 +78,56 @@
             </div>
 
             <div>
-              <form>
+              <form id="edit_farmer_forms">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-username">First Name</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Enter a name" value="Precious">
+                        <label class="form-control-label" for="First Name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control form-control-alternative" value="{{$farmer->first_name}}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-username">Last Name</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Enter a name" value="Esi">
+                        <label class="form-control-label" for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control form-control-alternative" value="{{$farmer->last_name}}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-username">Other Names</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Enter a name" value="Osei">
+                        <label class="form-control-label" for="other_name">Other Names</label>
+                        <input type="text" id="other_name" name="other_name" class="form-control form-control-alternative"  value="{{$farmer->other_name}}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-email">Location</label>
-                        <input type="text" class="form-control form-control-alternative" placeholder="Enter a location" value="Accra">
+                        <label class="form-control-label" for="Location">Location</label>
+                        <input type="text" id="location" name="location" class="form-control form-control-alternative" value="{{$farmer->location}}">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Gender</label>
+                        <label class="form-control-label" for="gender">Gender</label>
 
-                        <select class="form-control form-control-alternative">
+                        <select name="gender" class="form-control form-control-alternative">
                           <option value="male">Male</option>
-                          <option value="female" selected="selected">Female</option>
+                          <option value="female">Female</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Phone Number</label>
-                        <input type="tel" id="input-first-name" class="form-control form-control-alternative" placeholder="Enter a phone number" value="0249503948">
+                        <label class="form-control-label" for="Phone Number">Phone Number</label>
+                        <input type="tel" id="phone_number" name="phone_number" class="form-control form-control-alternative" value="{{$farmer->phone_number}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6" style="display:none;">
+                      <div class="form-group">
+                        <label class="form-control-label" for="Farmer ID">Farmer ID</label>
+                        <input type="hidden" id="farmer_editted_id" name="farmer_id" class="form-control form-control-alternative" >
                       </div>
                     </div>
                   </div>
@@ -128,14 +135,14 @@
 
               </form>
             </div>
-            
+
             <div class="card-footer py-4">
-              <a href="#"><button type="button" class="btn btn-success">Save</button></a>
+              <a><button type="button" class="btn btn-success" id="save_editted_farmer">Save</button></a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -144,7 +151,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>

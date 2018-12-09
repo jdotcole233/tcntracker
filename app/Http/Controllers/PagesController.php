@@ -3,11 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Farmer;
+use App\Buyer;
+use Farmer_transaction;
+
 
 class PagesController extends Controller
 {
     public function index(){
-    	return view("dashboard.index");
+     $total_farmers = Farmer::where('communitiescommunity_id', 1);
+     $total_buyers = Buyer::where('companiescompany_id', 1);
+     if ($total_farmers != null && $total_buyers != null){
+       $total_farmers = Farmer::where('communitiescommunity_id', 1)->count();
+       $total_buyers = Buyer::where('companiescompany_id', 1)->count();
+     } else {
+       $total_farmers = 0;
+       $total_buyers = 0;
+     }
+      //$total_transactions = Farmer_transaction::where('companiescompany_id', 1)->sum('total_weight');
+    	return view("dashboard.index", compact('total_farmers','total_buyers'));
     }
     public function farmerProfile(){
     	return view("dashboard.farmer-profile");
@@ -18,30 +32,20 @@ class PagesController extends Controller
     public function createBuyer(){
     	return view("dashboard.create-buyer");
     }
-    public function editBuyer(){
-    	return view("dashboard.edit-buyer");
-    }
+
     public function farmers(){
     	return view("dashboard.farmers");
     }
-    public function farmerSales(){
-    	return view("dashboard.farmer-sales");
-    }
-    public function viewFarmer(){
-    	return view("dashboard.view-farmer");
-    }
+
+    // public function viewFarmer(){
+    // 	return view("dashboard.view-farmer");
+    // }
     public function createFarmer(){
     	return view("dashboard.create-farmer");
     }
-    public function editFarmer(){
-    	return view("dashboard.edit-farmer");
-    }
-    public function createSale(){
-    	return view("dashboard.create-sale");
-    }
-    public function editSale(){
-    	return view("dashboard.edit-sale");
-    }
+
+
+
     public function communities(){
     	return view("dashboard.communities");
     }
@@ -51,9 +55,7 @@ class PagesController extends Controller
     public function createCommunity(){
     	return view("dashboard.create-community");
     }
-    public function editCommunity(){
-    	return view("dashboard.edit-community");
-    }
+
     public function updatePrice(){
     	return view("dashboard.update-price");
     }

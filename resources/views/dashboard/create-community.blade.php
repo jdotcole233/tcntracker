@@ -63,7 +63,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
@@ -78,25 +78,37 @@
             </div>
 
             <div>
-              <form>
+              <form id="create-community-form">
                 <div class="pl-lg-4">
-                 
+                  <meta name="csrf-token" content="{{ csrf_token() }}">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Region</label>
 
-                        <select class="form-control form-control-alternative">
+                        <select name="region_name" class="form-control form-control-alternative">
                           <option value="">Choose</option>
-                          <option value="male">Eastern Region</option>
-                          <option value="female">Greater Accra</option>
+                          <option value="Eastern Region">Eastern Region</option>
+                          <option value="Greater Accra Region">Greater Accra</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Community</label>
-                        <input type="tel" id="input-first-name" class="form-control form-control-alternative" placeholder="Enter a community">
+                        <input type="text" name="community_name" class="form-control form-control-alternative" placeholder="Enter a community">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">District</label>
+                        <input type="text" name="district_name" class="form-control form-control-alternative" placeholder="Enter a District">
+                      </div>
+                    </div>
+                    <div class="col-lg-6" style="display:none">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Community</label>
+                        <input type="text" name="companiescompany_id" class="form-control form-control-alternative" value="1">
                       </div>
                     </div>
                   </div>
@@ -104,14 +116,14 @@
 
               </form>
             </div>
-            
+
             <div class="card-footer py-4">
-              <a href="#"><button type="button" class="btn btn-success">Submit</button></a>
+              <a><button type="button" class="btn btn-success" id="submit_community_forms">Submit</button></a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
@@ -120,7 +132,7 @@
               &copy; 2018 <a href="{{ url('/') }}" class="font-weight-bold ml-1" target="_blank">TcnTracker</a>
             </div>
           </div>
-          
+
         </div>
       </footer>
     </div>
