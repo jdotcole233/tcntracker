@@ -11,15 +11,15 @@ use Farmer_transaction;
 class PagesController extends Controller
 {
     public function index(){
-     $total_farmers = Farmer::where('communitiescommunity_id', 1);
-     $total_buyers = Buyer::where('companiescompany_id', 1);
-     if ($total_farmers != null && $total_buyers != null){
-       $total_farmers = Farmer::where('communitiescommunity_id', 1)->count();
-       $total_buyers = Buyer::where('companiescompany_id', 1)->count();
-     } else {
-       $total_farmers = 0;
-       $total_buyers = 0;
-     }
+     $total_farmers = Farmer::all()->count();
+     $total_buyers = Buyer::where('companiescompany_id', 1)->count();
+     // if ($total_farmers != null && $total_buyers != null){
+     //   $total_farmers = Farmer::where('communitiescommunity_id', 1)->count();
+     //   $total_buyers = Buyer::where('companiescompany_id', 1)->count();
+     // } else {
+     //   $total_farmers = 0;
+     //   $total_buyers = 0;
+     // }
       //$total_transactions = Farmer_transaction::where('companiescompany_id', 1)->sum('total_weight');
     	return view("dashboard.index", compact('total_farmers','total_buyers'));
     }
