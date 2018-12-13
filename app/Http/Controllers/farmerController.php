@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Farmer;
 use App\Farmer_transaction;
+use App\Community;
 
 class farmerController extends Controller
 {
 
-    public static $print_comm_array;
+    public $print_comm_array = array();
 
     public function register_farmer(Request $request){
         Farmer::create($request->all());
@@ -82,9 +83,9 @@ class farmerController extends Controller
 
     //Famer ussd controls
 
-    public function farmer_application_control(Request $request){
-      $decoded_json = json_decode($request);
-      $incoming_phone = $decoded_json->MSISDN;
+    public function farmerapplicationcontrol(Request $request){
+//$request = json_decode($request, true);
+      $incoming_phone = $request->MSISDN;
       $found_name = "";
       $exist_farmer_phone = Farmer::where('phone_number', $incoming_phone)->first();
 
@@ -93,7 +94,7 @@ class farmerController extends Controller
         $found_name = $exist_farmer_phone->first_name . " " . $exist_farmer_phone->other_name . " " . $exist_farmer_phone->last_name; //get farmer name
         $community_name = Community::where("community_id", $exist_farmer_phone->communitiescommunity_id)->value("community_name"); //get community name
         $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
-        $registered_found = explode('*',$decoded_json->USERDATA); //explode userdata into array
+        $registered_found = explode('*',$request->USERDATA); //explode userdata into array
 
         //user data is not empty
         if ($request->USERDATA != ""){
@@ -101,10 +102,10 @@ class farmerController extends Controller
           //handle farmer transaction calculation
           if($registered_found[0] == "1" && $registered_found[1] != ""){
            $expected_payment = $this->ussd_price_compute($found_comm_price,$registered_found[1]);
-           return $this->data_tosend($decoded_json->MSISDN,$expected_payment,false);
+           return $this->data_tosend($request->MSISDN,$expected_payment,false);
          }else if($registered_found[0] == "1"){
               $response_one = "Enter total weight";
-              return $this->data_tosend($decoded_json->MSISDN,$response_one,true);
+              return $this->data_tosend($request->MSISDN,$response_one,true);
             }
 
           // handle farmer sales data
@@ -113,32 +114,32 @@ class farmerController extends Controller
             $farmer_sales_weight = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_weight');
             $farmer_sales_income = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_amount_paid');
             $sales_output .= "Sold ". $farmer_sales_weight . "kg for GHC " . $farmer_sales_income;
-            return $this->data_tosend($decoded_json->MSISDN,$sales_output,false);
+            return $this->data_tosend($request->MSISDN,$sales_output,false);
           }
 
           //handle registered farmer checking other communities prices
           if ($registered_found[0] == "3" && $registered_found[1] != null ){
               $get_community_name = $print_comm_array[$exploded_data[1]];
               $got_price = $this->check_community_price($get_community_name);
-              return $this->data_tosend($decoded_json->MSISDN,$got_price,false);
+              return $this->data_tosend($request->MSISDN,$got_price,false);
           }else if ($registered_found[0] == "3"){
-            return $this->data_tosend($decoded_json->MSISDN,ussd_output(), true);
+            return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
           }
         }
 
-        return $this->data_tosend($decoded_json->MSISDN,ussd_output($found_name, $community_name, $found_comm_price), true);
+        return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
       } else {
           //handle unregistered users
-          $user_input = $decoded_json->USERDATA;
+          $user_input = $request->USERDATA;
           $exploded_data = explode('*', $user_input);
           if($exploded_data[0] != null ){
-              return $this->data_tosend($decoded_json->MSISDN,ussd_output(), true);
+              return $this->data_tosend($request->MSISDN,ussd_outputs(), true);
           } else if ($exploded_data[0] != null && $exploded_data[1] != null ){
               $get_community_name = $print_comm_array[$exploded_data[1]];
               $got_price = $this->check_community_price($get_community_name);
-              return $this->data_tosend($decoded_json->MSISDN,$got_price,false);
+              return $this->data_tosend($request->MSISDN,$got_price,false);
           }
-          return $this->data_tosend($decoded_json->MSISDN,ussd_output(), true);
+          return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
       }
 
     }
@@ -153,10 +154,11 @@ class farmerController extends Controller
     }
 
     // find all communities and associated prices
-    private function ussd_output(){
+    private function ussd_outputs(){
       $display = "Select community\n";
+      $print_comm_array = [];
       $count = 1;
-      $communities = Community::all()->get();
+      $communities = Community::all();
       foreach ($communities as $community) {
         $display .= $count . ". " . $community->community_name. "\n";
         array_push($print_comm_array, $community->community_name);
@@ -191,7 +193,7 @@ class farmerController extends Controller
           'MSGTYPE' => $msg_type
         ];
 
-       return json_econde($jsonresponse);
+       return json_encode($jsonresponse);
     }
 
 }
