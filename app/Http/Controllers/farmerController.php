@@ -11,7 +11,7 @@ use App\Community_price;
 class farmerController extends Controller
 {
 
-    public $print_comm_array = array();
+    // private static ;
 
     public function register_farmer(Request $request){
         Farmer::create($request->all());
@@ -90,6 +90,7 @@ class farmerController extends Controller
       $found_name = "";
       //print_r($request->MSISDN);
       $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
+      $income_array = $this->ussd_outputsarray();
 
       //Farmer exists in tontracker database
       if($exist_farmer_phone != null){
@@ -133,11 +134,14 @@ class farmerController extends Controller
       } else {
           //handle unregistered users
           $user_input = $request->USERDATA;
-          $exploded_data = explode('*', $user_input);
-          if($exploded_data[0] != null ){
-              return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
-          } else if ($exploded_data[0] != null && $exploded_data[1] != null ){
-              $get_community_name = $print_comm_array[$exploded_data[1]];
+        //  $exploded_data = explode('*', $user_input);
+          // if($request->USERDATA != null ){
+          //     return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
+          // } else
+           if ($request->USERDATA != "" ){
+              $cal = intval($request->USERDATA) - 1;
+            //  print_r($income_array);
+              $get_community_name = $income_array[$cal];
               $got_price = $this->check_community_price($get_community_name);
               return $this->data_tosend($request->MSISDN,$got_price,false);
           }
@@ -158,17 +162,26 @@ class farmerController extends Controller
     // find all communities and associated prices
     private function ussd_outputs(){
       $display = "Select community\n";
-      $print_comm_array = [];
       $count = 1;
       $communities = Community::all();
       foreach ($communities as $community) {
         $display .= $count . ". " . $community->community_name. "\n";
-        array_push($print_comm_array, $community->community_name);
+        array_push($this->print_comm_array, $community->community_name);
         //add abbreviations to company names
         $count++;
       }
 
       return $display;
+    }
+
+    private function ussd_outputsarray(){
+      $print_comm_array = array();
+      $communities = Community::all();
+      foreach ($communities as $community) {
+        array_push($print_comm_array, $community->community_name);
+      }
+
+      return $print_comm_array;
     }
 
     //handle farmer price computation
