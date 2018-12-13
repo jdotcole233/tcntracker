@@ -91,3 +91,7 @@ Route::get('/create-sale/{id}', 'farmerController@createSale');
 Route::get('/farmer-sales/{id}', 'farmerController@farmerSales');
 Route::get('/edit-sale/{id}', 'farmerController@editSale');
 Route::post('/edit-forFarmerSale', 'farmerController@editSaleDetails');
+
+
+//ussd endpoint
+Route::post('/fussd_interact', 'farmerController@farmer_application_control');
