@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Farmer;
 use App\Farmer_transaction;
 use App\Community;
+use App\Community_price;
 
 class farmerController extends Controller
 {
@@ -87,7 +88,8 @@ class farmerController extends Controller
 //$request = json_decode($request, true);
       $incoming_phone = $request->MSISDN;
       $found_name = "";
-      $exist_farmer_phone = Farmer::where('phone_number', $incoming_phone)->first();
+      //print_r($request->MSISDN);
+      $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
 
       //Farmer exists in tontracker database
       if($exist_farmer_phone != null){
@@ -102,10 +104,10 @@ class farmerController extends Controller
           //handle farmer transaction calculation
           if($registered_found[0] == "1" && $registered_found[1] != ""){
            $expected_payment = $this->ussd_price_compute($found_comm_price,$registered_found[1]);
-           return $this->data_tosend($request->MSISDN,$expected_payment,false);
+           return $this->data_tosend("233".$request->MSISDN,$expected_payment,false);
          }else if($registered_found[0] == "1"){
               $response_one = "Enter total weight";
-              return $this->data_tosend($request->MSISDN,$response_one,true);
+              return $this->data_tosend("233".$request->MSISDN,$response_one,true);
             }
 
           // handle farmer sales data
@@ -133,7 +135,7 @@ class farmerController extends Controller
           $user_input = $request->USERDATA;
           $exploded_data = explode('*', $user_input);
           if($exploded_data[0] != null ){
-              return $this->data_tosend($request->MSISDN,ussd_outputs(), true);
+              return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
           } else if ($exploded_data[0] != null && $exploded_data[1] != null ){
               $get_community_name = $print_comm_array[$exploded_data[1]];
               $got_price = $this->check_community_price($get_community_name);
@@ -188,7 +190,7 @@ class farmerController extends Controller
     private function data_tosend($msisdn, $msg, $msg_type){
         $jsonresponse = [
           'USERID' => 'TTR_0025',
-          'MSISDN' => $msisdn,
+          'MSISDN' => '233'.$msisdn,
           'MSG' => $msg,
           'MSGTYPE' => $msg_type
         ];
