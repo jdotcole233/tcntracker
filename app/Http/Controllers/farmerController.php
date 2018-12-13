@@ -108,7 +108,7 @@ class farmerController extends Controller
            return $this->data_tosend("233".$request->MSISDN,$expected_payment,false);
          }else if($registered_found[0] == "1"){
               $response_one = "Enter total weight";
-              return $this->data_tosend("233".$request->MSISDN,$response_one,true);
+              return $this->data_tosend($request->MSISDN,$response_one,true);
             }
 
           // handle farmer sales data
@@ -140,7 +140,6 @@ class farmerController extends Controller
           // } else
            if ($request->USERDATA != "" ){
               $cal = intval($request->USERDATA) - 1;
-            //  print_r($income_array);
               $get_community_name = $income_array[$cal];
               $got_price = $this->check_community_price($get_community_name);
               return $this->data_tosend($request->MSISDN,$got_price,false);
@@ -166,7 +165,7 @@ class farmerController extends Controller
       $communities = Community::all();
       foreach ($communities as $community) {
         $display .= $count . ". " . $community->community_name. "\n";
-        array_push($this->print_comm_array, $community->community_name);
+        //array_push($this->print_comm_array, $community->community_name);
         //add abbreviations to company names
         $count++;
       }
