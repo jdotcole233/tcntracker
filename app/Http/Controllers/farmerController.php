@@ -185,7 +185,7 @@ class farmerController extends Controller
     // encode data to be sent back
     private function data_tosend($msisdn, $msg, $msg_type){
         $jsonresponse = [
-          'USERID' => '',
+          'USERID' => 'TTR_0025',
           'MSISDN' => $msisdn,
           'MSG' => $msg,
           'MSGTYPE' => $msg_type
