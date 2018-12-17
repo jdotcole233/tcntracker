@@ -15,6 +15,7 @@ class ussdController extends Controller
   public function farmerapplicationcontrol(Request $request){
     $incoming_phone = $request->MSISDN;
     $found_name = "";
+    $boolean_check = false;
     $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
 
     if ($exist_farmer_phone != null){
@@ -26,9 +27,9 @@ class ussdController extends Controller
         //calculate farmer sale
         if ($request->USERDATA == "1"){
           $request->session()->put("weight".$request->MSISDN,"true");
-          $response_one = "Enter total weight" .$request->session("weight".$request->MSISDN);
+          $boolean_check = true;
           return $this->data_tosend($request->MSISDN,$response_one,true);
-        } else if ($request->session()->has("weight".$request->MSISDN)){
+        } else if ($boolean_check){
           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
           $request->session()->flush("weight".$request->MSISDN);
           return $this->data_tosend($request->MSISDN,$expected_payment,false);
