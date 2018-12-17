@@ -54,7 +54,7 @@ class ussdController extends Controller
         return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".intval($request->USERDATA)), true);
       }
     } else{
-      return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), true);
+      return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), false);
     }
   }
 
@@ -78,7 +78,7 @@ class ussdController extends Controller
     foreach ($communities as $community) {
       $community_id  = Community::where('community_name', $community->community_name)->value("community_id");
       $current_price  = Community_price::where('communitiescommunity_id', $community_id)->latest()->first();
-      $display .= $count . ". " . $community->community_name. "- price: " . $current_price ."\n";
+      $display .= $count . ". " . $community->community_name. "- price: " . $current_price->current_price ."\n";
       //array_push($this->print_comm_array, $community->community_name);
       //add abbreviations to company names
       $count++;
