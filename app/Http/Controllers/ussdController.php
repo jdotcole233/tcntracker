@@ -25,7 +25,7 @@ class ussdController extends Controller
       if ($request->USERDATA != null){
         return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
       } else{
-         if ($request->USERDATA == 1){
+         if ($request->USERDATA == "1"){
            $response_one = "Enter total weight";
            session()->put("weight","filled");
            return $this->data_tosend($request->MSISDN,$response_one,true);
