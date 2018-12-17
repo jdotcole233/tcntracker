@@ -23,6 +23,7 @@ class ussdController extends Controller
       $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
 
       if ($request->USERDATA != null){
+        //calculate farmer sale
         if ($request->USERDATA == "1"){
           $response_one = "Enter total weight";
           $request->session()->put("weight".$request->MSISDN,"true");
@@ -32,6 +33,16 @@ class ussdController extends Controller
           $request->session()->flush("weight".$request->MSISDN);
           return $this->data_tosend($request->MSISDN,$expected_payment,false);
         }
+
+          //query sales data
+          if($request->USERDATA == "2"){
+            $sales_output = "";
+            $farmer_sales_weight = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_weight');
+            $farmer_sales_income = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_amount_paid');
+            $sales_output .= "Sold ". $farmer_sales_weight . "kg for GHC " . $farmer_sales_income;
+            return $this->data_tosend($request->MSISDN,$sales_output,false);
+          }
+
         return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name.intval($request->USERDATA), $found_comm_price), true);
       } else{
 
