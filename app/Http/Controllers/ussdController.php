@@ -25,11 +25,29 @@ class ussdController extends Controller
       if ($request->USERDATA != null){
         return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
       } else{
-         if ($request->USERDATA == "1"){
-           $response_one = "Enter total weight";
-           session()->put("weight","filled");
-           return $this->data_tosend($request->MSISDN,$response_one,true);
-         }
+        if($request->USERDATA == "1"){
+            $response_one = "Enter total weight string(1)";
+            session()->put("weight","filled");
+            return $this->data_tosend($request->MSISDN,$response_one,true);
+          }
+
+          if($request->USERDATA == 1){
+              $response_one = "Enter total weight int(1)";
+              session()->put("weight","filled");
+              return $this->data_tosend($request->MSISDN,$response_one,true);
+            }
+
+            if($request->USERDATA == 920025){
+                $response_one = "Enter total weight 920025";
+                session()->put("weight","filled");
+                return $this->data_tosend($request->MSISDN,$response_one,true);
+              }
+
+              if($request->USERDATA == "920025"){
+                  $response_one = "Enter total weight (920025)";
+                  session()->put("weight","filled");
+                  return $this->data_tosend($request->MSISDN,$response_one,true);
+                }
         return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), true);
       }
     } else{
