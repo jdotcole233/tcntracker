@@ -17,7 +17,15 @@ class ussdController extends Controller
     $found_name = "";
     $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
 
-    return $this->data_tosend($request->MSISDN,$this->ussd_outputs($exist_farmer_phone->first_name), true);
+    if ($exist_farmer_phone != null){
+      $found_name .= $exist_farmer_phone->first_name . " " . $exist_farmer_phone->other_name . " " . $exist_farmer_phone->last_name; //get farmer name
+      $community_name = Community::where("community_id", $exist_farmer_phone->communitiescommunity_id)->value("community_name"); //get community name
+      $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
+
+      return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
+    } else{
+      return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not found"), true);
+    }
   }
 
   //print farmer name and community price
