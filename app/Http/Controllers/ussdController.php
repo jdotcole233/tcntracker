@@ -22,8 +22,8 @@ class ussdController extends Controller
       $community_name = Community::where("community_id", $exist_farmer_phone->communitiescommunity_id)->value("community_name"); //get community name
       $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
 
-      if ($request->USERDATA != ""){
-        return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null"), true);
+      if ($request->USERDATA != null){
+        return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), true);
       } else{
         return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
       }
