@@ -74,7 +74,7 @@ class ussdController extends Controller
 
   // find all communities and associated prices
   private function ussd_outputs(){
-    $display = "Welcome to TON TRACKER\nCommunity price list\n";
+    $display = "TON TRACKER\nPrice list\n";
     $count = 1;
     $communities = Community::all();
     /*
@@ -84,7 +84,7 @@ class ussdController extends Controller
     foreach ($communities as $community) {
       $community_id  = Community::where('community_name', $community->community_name)->value("community_id");
       $current_price  = Community_price::where('communitiescommunity_id', $community_id)->latest()->first();
-      $display .= $count . ". " . $community->community_name. " - price: " . $current_price->current_price ."\n";
+      $display .= $count . ". " . $community->community_name. " - GHC: " . $current_price->current_price ."\n";
       $count++;
     }
 
