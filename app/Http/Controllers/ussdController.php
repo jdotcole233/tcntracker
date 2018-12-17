@@ -28,7 +28,7 @@ class ussdController extends Controller
         return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
       }
     } else{
-      return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not found"), true);
+      return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), true);
     }
   }
 
