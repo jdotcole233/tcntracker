@@ -11,6 +11,7 @@ use App\Community_price;
 class ussdController extends Controller
 {
   //Famer ussd controls
+  public $boolean_check = false;
 
   public function farmerapplicationcontrol(Request $request){
     $incoming_phone = $request->MSISDN;
@@ -26,12 +27,11 @@ class ussdController extends Controller
       if ($request->USERDATA != null){
         //calculate farmer sale
         if ($request->USERDATA == "1"){
-          $boolean_check = true;
+          $this->boolean_check = true;
           $response_one = "Enter total weight";
           return $this->data_tosend($request->MSISDN,$response_one,true);
-        } else if ($boolean_check){
+        } else if ($this->boolean_check){
           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
-          $request->session()->flush("weight".$request->MSISDN);
           return $this->data_tosend($request->MSISDN,$expected_payment,false);
         }
 
