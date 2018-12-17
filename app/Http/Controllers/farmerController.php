@@ -88,62 +88,62 @@ class farmerController extends Controller
       $incoming_phone = $request->MSISDN;
       // $found_name = "";
        $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
-       $income_array = $this->ussd_outputsarray();
-      //
-      // //Farmer exists in tontracker database
-      // if($exist_farmer_phone != null){
-      //   $found_name = $exist_farmer_phone->first_name . " " . $exist_farmer_phone->other_name . " " . $exist_farmer_phone->last_name; //get farmer name
-      //   $community_name = Community::where("community_id", $exist_farmer_phone->communitiescommunity_id)->value("community_name"); //get community name
-      //   $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
-      //   $registered_found = explode('*',$request->USERDATA); //explode userdata into array
-      //
-      //   //user data is not empty
-      //   if ($request->USERDATA != ""){
-      //
-      //     //handle farmer transaction calculation
-      //     if($request->USERDATA != "" && session()->get("weight") == "filled"){
-      //      $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
-      //      session()->flush("weight");
-      //      return $this->data_tosend($request->MSISDN,$expected_payment,false);
-      //    }else if($request->USERDATA == "1"){
-      //         $response_one = "Enter total weight";
-      //         session()->put("weight","filled");
-      //         return $this->data_tosend($request->MSISDN,$response_one,true);
-      //       }
-      //
-      //     // handle farmer sales data
-      //     if($request->USERDATA == "2"){
-      //       $sales_output = "";
-      //       $farmer_sales_weight = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_weight');
-      //       $farmer_sales_income = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_amount_paid');
-      //       $sales_output .= "Sold ". $farmer_sales_weight . "kg for GHC " . $farmer_sales_income;
-      //       return $this->data_tosend($request->MSISDN,$sales_output,false);
-      //     }
-      //
-      //     //handle registered farmer checking other communities prices
-      //     if ($request->USERDATA != "" && session()->get("price") == "filled" ){
-      //         $get_community_name = $income_array[intval($request->USERDATA)-1];
-      //         $got_price = $this->check_community_price($get_community_name);
-      //         session()->flush("price");
-      //         return $this->data_tosend($request->MSISDN,$got_price,false);
-      //     }else if ($request->USERDATA == "3"){
-      //       session()->put("price","filled");
-      //       return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
-      //     }
-      //   }
-      //
-      //   return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
-      // } else {
-      //     //handle unregistered users
-      //     $user_input = $request->USERDATA;
-      //      if ($request->USERDATA != "" ){
-      //         $cal = intval($request->USERDATA) - 1;
-      //         $get_community_name = $income_array[$cal];
-      //         $got_price = $this->check_community_price($get_community_name);
-      //         return $this->data_tosend($request->MSISDN,$got_price,false);
-      //     }
+      // $income_array = $this->ussd_outputsarray();
+
+      //Farmer exists in tontracker database
+      if($exist_farmer_phone != null){
+        $found_name = $exist_farmer_phone->first_name . " " . $exist_farmer_phone->other_name . " " . $exist_farmer_phone->last_name; //get farmer name
+        $community_name = Community::where("community_id", $exist_farmer_phone->communitiescommunity_id)->value("community_name"); //get community name
+        $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
+        $registered_found = explode('*',$request->USERDATA); //explode userdata into array
+
+        //user data is not empty
+        if ($request->USERDATA != ""){
+
+          //handle farmer transaction calculation
+          if($request->USERDATA != "" && session()->get("weight") == "filled"){
+           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
+           session()->flush("weight");
+           return $this->data_tosend($request->MSISDN,$expected_payment,false);
+         }else if($request->USERDATA == "1"){
+              $response_one = "Enter total weight";
+              session()->put("weight","filled");
+              return $this->data_tosend($request->MSISDN,$response_one,true);
+            }
+
+          // handle farmer sales data
+          if($request->USERDATA == "2"){
+            $sales_output = "";
+            $farmer_sales_weight = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_weight');
+            $farmer_sales_income = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_amount_paid');
+            $sales_output .= "Sold ". $farmer_sales_weight . "kg for GHC " . $farmer_sales_income;
+            return $this->data_tosend($request->MSISDN,$sales_output,false);
+          }
+
+          //handle registered farmer checking other communities prices
+          if ($request->USERDATA != "" && session()->get("price") == "filled" ){
+              $get_community_name = $income_array[intval($request->USERDATA)-1];
+              $got_price = $this->check_community_price($get_community_name);
+              session()->flush("price");
+              return $this->data_tosend($request->MSISDN,$got_price,false);
+          }else if ($request->USERDATA == "3"){
+            session()->put("price","filled");
+            return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
+          }
+        }
+
+        return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
+      } else {
+          //handle unregistered users
+          $user_input = $request->USERDATA;
+           if ($request->USERDATA != "" ){
+              $cal = intval($request->USERDATA) - 1;
+              $get_community_name = $income_array[$cal];
+              $got_price = $this->check_community_price($get_community_name);
+              return $this->data_tosend($request->MSISDN,$got_price,false);
+          }
           return $this->data_tosend($request->MSISDN,$this->ussd_outputs($income_array), true);
-      // }
+      }
 
     }
 
