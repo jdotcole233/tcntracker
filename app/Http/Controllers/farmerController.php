@@ -142,7 +142,7 @@ class farmerController extends Controller
               $got_price = $this->check_community_price($get_community_name);
               return $this->data_tosend($request->MSISDN,$got_price,false);
           }
-          return $this->data_tosend($request->MSISDN,$this->ussd_outputs($income_array), true);
+          return $this->data_tosend($request->MSISDN,$this->ussd_outputs($request->USERDATA), true);
       }
 
     }
