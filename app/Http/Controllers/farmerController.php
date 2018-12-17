@@ -164,15 +164,15 @@ class farmerController extends Controller
 
     // find all communities and associated prices
     private function ussd_outputs(){
-      $display = "Select community\n Working";
-      // $count = 1;
-      // $communities = Community::all();
-      // foreach ($communities as $community) {
-      //   $display .= $count . ". " . $community->community_name. "\n";
-      //   //array_push($this->print_comm_array, $community->community_name);
-      //   //add abbreviations to company names
-      //   $count++;
-      // }
+      $display = "Select community\n";
+      $count = 1;
+      $communities = Community::all();
+      foreach ($communities as $community) {
+        $display .= $count . ". " . $community->community_name. "\n";
+        //array_push($this->print_comm_array, $community->community_name);
+        //add abbreviations to company names
+        $count++;
+      }
 
       return $display;
     }
