@@ -25,9 +25,9 @@ class ussdController extends Controller
       if ($request->USERDATA != null){
         //calculate farmer sale
         if ($request->USERDATA == "1"){
-          $response_one = "Enter total weight";
           $request->session()->put("weight".$request->MSISDN,"true");
-          return $this->data_tosend($request->MSISDN,$response_one.$request->session("weight".$request->MSISDN) ,true);
+          $response_one = "Enter total weight" .$request->session("weight".$request->MSISDN);
+          return $this->data_tosend($request->MSISDN,$response_one,true);
         } else if ($request->session()->has("weight".$request->MSISDN)){
           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
           $request->session()->flush("weight".$request->MSISDN);
