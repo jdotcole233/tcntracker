@@ -149,7 +149,7 @@ class farmerController extends Controller
       //         return $this->data_tosend($request->MSISDN,$got_price,false);
       //     }
           return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
-      }
+    //  }
 
     }
 
