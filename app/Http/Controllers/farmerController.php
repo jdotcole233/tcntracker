@@ -87,7 +87,7 @@ class farmerController extends Controller
     public function farmerapplicationcontrol(Request $request){
       $incoming_phone = $request->MSISDN;
       // $found_name = "";
-       $exist_farmer_phone = Farmer::where('phone_number',  "050848404")->value("first_name");
+       $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
        $income_array = $this->ussd_outputsarray();
       //
       // //Farmer exists in tontracker database
@@ -142,7 +142,7 @@ class farmerController extends Controller
       //         $got_price = $this->check_community_price($get_community_name);
       //         return $this->data_tosend($request->MSISDN,$got_price,false);
       //     }
-          return $this->data_tosend($request->MSISDN,$this->ussd_outputs($exist_farmer_phone), true);
+          return $this->data_tosend($request->MSISDN,$this->ussd_outputs($income_array), true);
       // }
 
     }
