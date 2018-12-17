@@ -8,9 +8,6 @@ use App\Farmer_transaction;
 use App\Community;
 use App\Community_price;
 
-$GLOBAL['boolean_check'] = false;
-
-
 class ussdController extends Controller
 {
   //Famer ussd controls
@@ -24,15 +21,20 @@ class ussdController extends Controller
       $found_name .= $exist_farmer_phone->first_name . " " . $exist_farmer_phone->other_name . " " . $exist_farmer_phone->last_name; //get farmer name
       $community_name = Community::where("community_id", $exist_farmer_phone->communitiescommunity_id)->value("community_name"); //get community name
       $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
-
+      $check_back = Farmer::where('farmer_id', $exist_farmer_phone->farmer_id)->value('farmer_calc');
       if ($request->USERDATA != null){
         //calculate farmer sale
         if ($request->USERDATA == "1"){
-          $GLOBAL['boolean_check'] = true;
+          Farmer::where('farmer_id', $exist_farmer_phone->farmer_id)->update([
+            'farmer_calc' => 'true'
+          ]);
           $response_one = "Enter total weight";
           return $this->data_tosend($request->MSISDN,$response_one,true);
-        } else if ($GLOBAL['boolean_check']){
+        } else if ( $check_back == "true"){
           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
+          Farmer::where('farmer_id', $exist_farmer_phone->farmer_id)->update([
+            'farmer_calc' => 'false'
+          ]);
           return $this->data_tosend($request->MSISDN,$expected_payment,false);
         }
 
