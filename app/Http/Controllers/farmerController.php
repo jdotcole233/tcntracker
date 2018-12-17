@@ -87,8 +87,8 @@ class farmerController extends Controller
     public function farmerapplicationcontrol(Request $request){
       $incoming_phone = $request->MSISDN;
       // $found_name = "";
-       $exist_farmer_phone = Farmer::where('phone_number',  "050848404")->first();
-      // $income_array = $this->ussd_outputsarray();
+       $exist_farmer_phone = Farmer::where('phone_number',  "050848404")->value("first_name");
+       $income_array = $this->ussd_outputsarray();
       //
       // //Farmer exists in tontracker database
       // if($exist_farmer_phone != null){
