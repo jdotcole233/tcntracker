@@ -31,7 +31,8 @@ class ussdController extends Controller
           $response_one = "Enter total weight";
           return $this->data_tosend($request->MSISDN,$response_one,true);
         } else if ( $check_back == "true"){
-          $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
+          $expected_payment = "TON TRACKER\nTotal amount GHC: ";
+          $expected_payment .= $this->ussd_price_compute($found_comm_price,$request->USERDATA);
           Farmer::where('farmer_id', $exist_farmer_phone->farmer_id)->update([
             'farmer_calc' => 'false'
           ]);
