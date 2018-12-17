@@ -16,7 +16,6 @@ class ussdController extends Controller
   public function farmerapplicationcontrol(Request $request){
     $incoming_phone = $request->MSISDN;
     $found_name = "";
-    $boolean_check = false;
     $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
 
     if ($exist_farmer_phone != null){
