@@ -15,9 +15,9 @@ class ussdController extends Controller
   public function farmerapplicationcontrol(Request $request){
     $incoming_phone = $request->MSISDN;
     $found_name = "";
-    $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
+  //  $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
 
-    return $this->data_tosend($request->MSISDN,$this->ussd_outputs($exist_farmer_phone->first_name), true);
+    return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Cole"), true);
   }
 
   //print farmer name and community price
