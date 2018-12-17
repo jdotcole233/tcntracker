@@ -26,10 +26,10 @@ class ussdController extends Controller
       if ($request->USERDATA != null){
         //calculate farmer sale
         if ($request->USERDATA == "1"){
-          self::boolean_check = true;
+          ussdController::boolean_check = true;
           $response_one = "Enter total weight";
           return $this->data_tosend($request->MSISDN,$response_one,true);
-        } else if (sel::boolean_check){
+        } else if (ussdController::boolean_check){
           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
           return $this->data_tosend($request->MSISDN,$expected_payment,false);
         }
