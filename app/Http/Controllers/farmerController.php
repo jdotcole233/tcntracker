@@ -87,7 +87,6 @@ class farmerController extends Controller
     public function farmerapplicationcontrol(Request $request){
       $incoming_phone = $request->MSISDN;
       // $found_name = "";
-      // //print_r($request->MSISDN);
       // $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
       // $income_array = $this->ussd_outputsarray();
       //
@@ -137,17 +136,13 @@ class farmerController extends Controller
       // } else {
       //     //handle unregistered users
       //     $user_input = $request->USERDATA;
-      //   //  $exploded_data = explode('*', $user_input);
-      //     // if($request->USERDATA != null ){
-      //     //     return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
-      //     // } else
       //      if ($request->USERDATA != "" ){
       //         $cal = intval($request->USERDATA) - 1;
       //         $get_community_name = $income_array[$cal];
       //         $got_price = $this->check_community_price($get_community_name);
       //         return $this->data_tosend($request->MSISDN,$got_price,false);
       //     }
-          return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
+          return $this->data_tosend($request->MSISDN,$this->ussd_outputs($request->MSISDN), true);
       // }
 
     }
@@ -162,8 +157,9 @@ class farmerController extends Controller
     }
 
     // find all communities and associated prices
-    private function ussd_outputs(){
+    private function ussd_outputs($yam){
       $display = "Select community\n";
+      $display .= $yam;
       $count = 1;
       $communities = Community::all();
       foreach ($communities as $community) {
