@@ -120,7 +120,7 @@ class ussdController extends Controller
   private function data_tosend($msisdn, $msg, $msg_type){
       $jsonresponse = [
         'USERID' => 'TTR_0025',
-        'MSISDN' => '233'.$msisdn,
+        'MSISDN' => $msisdn,
         'MSG' => $msg,
         'MSGTYPE' => $msg_type
       ];
