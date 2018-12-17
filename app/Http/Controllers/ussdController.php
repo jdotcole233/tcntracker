@@ -11,7 +11,7 @@ use App\Community_price;
 class ussdController extends Controller
 {
   //Famer ussd controls
-  $boolean_check = false;
+  public $boolean_check = false;
 
   public function farmerapplicationcontrol(Request $request){
     $incoming_phone = $request->MSISDN;
