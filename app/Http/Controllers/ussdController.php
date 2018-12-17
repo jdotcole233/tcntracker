@@ -43,6 +43,11 @@ class ussdController extends Controller
             return $this->data_tosend($request->MSISDN,$sales_output,false);
           }
 
+          //viewing other communities
+          if($request->USERDATA == "3"){
+            return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), true);
+          }
+
         return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name.intval($request->USERDATA), $found_comm_price), true);
       } else{
 
