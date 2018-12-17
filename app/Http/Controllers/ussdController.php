@@ -8,10 +8,12 @@ use App\Farmer_transaction;
 use App\Community;
 use App\Community_price;
 
+$GLOBAL['boolean_check'] = false;
+
+
 class ussdController extends Controller
 {
   //Famer ussd controls
-  $GLOBAL['boolean_check'] = false;
 
   public function farmerapplicationcontrol(Request $request){
     $incoming_phone = $request->MSISDN;
