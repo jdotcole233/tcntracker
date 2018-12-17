@@ -27,7 +27,7 @@ class ussdController extends Controller
         if ($request->USERDATA == "1"){
           $response_one = "Enter total weight";
           $request->session()->put("weight".$request->MSISDN,"true");
-          return $this->data_tosend($request->MSISDN,$response_one,true);
+          return $this->data_tosend($request->MSISDN,$response_one.$request->session("weight".$request->MSISDN) ,true);
         } else if ($request->session()->has("weight".$request->MSISDN)){
           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
           $request->session()->flush("weight".$request->MSISDN);
