@@ -23,32 +23,10 @@ class ussdController extends Controller
       $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
 
       if ($request->USERDATA != null){
-        return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name. $request->MSG, $found_comm_price), true);
+        return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name.intval($request->USERDATA), $found_comm_price), true);
       } else{
-        if($request->USERDATA == "1"){
-            $response_one = "Enter total weight string(1)";
-            session()->put("weight","filled");
-            return $this->data_tosend($request->MSISDN,$response_one,true);
-          }
 
-          if($request->USERDATA == 1){
-              $response_one = "Enter total weight int(1)";
-              session()->put("weight","filled");
-              return $this->data_tosend($request->MSISDN,$response_one,true);
-            }
-
-            if($request->USERDATA == 920025){
-                $response_one = "Enter total weight 920025";
-                session()->put("weight","filled");
-                return $this->data_tosend($request->MSISDN,$response_one,true);
-              }
-
-              if($request->USERDATA == "920025"){
-                  $response_one = "Enter total weight (920025)";
-                  session()->put("weight","filled");
-                  return $this->data_tosend($request->MSISDN,$response_one,true);
-                }
-        return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), true);
+        return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".intval($request->USERDATA)), true);
       }
     } else{
       return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), true);
