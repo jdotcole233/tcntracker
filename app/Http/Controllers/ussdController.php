@@ -69,7 +69,7 @@ class ussdController extends Controller
 
   // find all communities and associated prices
   private function ussd_outputs(){
-    $display = "Welcome to TON TRACKER\n Select community\n";
+    $display = "Welcome to TON TRACKER\nCommunity price list\n";
     $count = 1;
     $communities = Community::all();
     /*
