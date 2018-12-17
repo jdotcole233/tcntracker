@@ -23,6 +23,11 @@ class ussdController extends Controller
       $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
 
       if ($request->USERDATA != null){
+        if ($request->USERDATA == "1"){
+          $response_one = "Enter total weight";
+          session()->put("weight","filled");
+          return $this->data_tosend($request->MSISDN,$response_one,true);
+        }
         return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name.intval($request->USERDATA), $found_comm_price), true);
       } else{
 
