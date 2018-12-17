@@ -48,13 +48,13 @@ class ussdController extends Controller
             return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), false);
           }
 
-        return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name.intval($request->USERDATA), $found_comm_price), true);
+        return $this->data_tosend($request->MSISDN,$this->ussd_output($found_name, $community_name, $found_comm_price), true);
       } else{
 
-        return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".intval($request->USERDATA)), true);
+        return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
       }
     } else{
-      return $this->data_tosend($request->MSISDN,$this->ussd_outputs("Not equal to null ".$request->USERDATA), false);
+      return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), false);
     }
   }
 
