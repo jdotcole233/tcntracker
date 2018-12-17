@@ -84,7 +84,7 @@ class farmerController extends Controller
 
     //Famer ussd controls
     public function farmerapplicationcontrol(Request $request){
-      $decoded_response = json_decode($request);
+      $decoded_response = json_decode($request, true);
       // $found_name = "";
       // //print_r($request->MSISDN);
       // $exist_farmer_phone = Farmer::where('phone_number',  $decoded_response->MSISDN)->first();
