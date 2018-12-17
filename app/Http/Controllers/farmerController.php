@@ -85,12 +85,12 @@ class farmerController extends Controller
     //Famer ussd controls
 
     public function farmerapplicationcontrol(Request $request){
-//$request = json_decode($request, true);
       $incoming_phone = $request->MSISDN;
       $found_name = "";
       //print_r($request->MSISDN);
       $exist_farmer_phone = Farmer::where('phone_number',  $request->MSISDN)->first();
       $income_array = $this->ussd_outputsarray();
+      print_r(session("weight"));
 
       //Farmer exists in tontracker database
       if($exist_farmer_phone != null){
@@ -103,16 +103,18 @@ class farmerController extends Controller
         if ($request->USERDATA != ""){
 
           //handle farmer transaction calculation
-          if($registered_found[0] == "1" && $registered_found[1] != ""){
-           $expected_payment = $this->ussd_price_compute($found_comm_price,$registered_found[1]);
-           return $this->data_tosend("233".$request->MSISDN,$expected_payment,false);
-         }else if($registered_found[0] == "1"){
+          if($request->USERDATA != "" && session()->get("weight") == "filled"){
+           $expected_payment = $this->ussd_price_compute($found_comm_price,$request->USERDATA);
+           session()->flush("weight");
+           return $this->data_tosend($request->MSISDN,$expected_payment,false);
+         }else if($request->USERDATA == "1"){
               $response_one = "Enter total weight";
+              session()->put("weight","filled");
               return $this->data_tosend($request->MSISDN,$response_one,true);
             }
 
           // handle farmer sales data
-          if($registered_found[0] == "2"){
+          if($request->USERDATA == "2"){
             $sales_output = "";
             $farmer_sales_weight = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_weight');
             $farmer_sales_income = Farmer_transaction::where('farmersfarmer_id',$exist_farmer_phone->farmer_id)->sum('total_amount_paid');
@@ -121,11 +123,13 @@ class farmerController extends Controller
           }
 
           //handle registered farmer checking other communities prices
-          if ($registered_found[0] == "3" && $registered_found[1] != null ){
-              $get_community_name = $print_comm_array[$exploded_data[1]];
+          if ($request->USERDATA != "" && session()->get("price") == "filled" ){
+              $get_community_name = $income_array[intval($request->USERDATA)-1];
               $got_price = $this->check_community_price($get_community_name);
+              session()->flush("price");
               return $this->data_tosend($request->MSISDN,$got_price,false);
-          }else if ($registered_found[0] == "3"){
+          }else if ($request->USERDATA == "3"){
+            session()->put("price","filled");
             return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
           }
         }
