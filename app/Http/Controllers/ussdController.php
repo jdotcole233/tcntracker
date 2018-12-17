@@ -30,9 +30,9 @@ class ussdController extends Controller
 
   //print farmer name and community price
   private function ussd_output($farmer_name, $community_name, $current_price){
-      $display = "Welcome " . $farmer_name;
-      $display .= "\n" . $community_name . " current price " . $current_price;
-      $display .= "\n1.Calculate total sales\n2.Other communities";
+      $display = "Welcome to TON TRACKER\n" . $farmer_name;
+      $display .= "\n" . $community_name . " price: " . $current_price;
+      $display .= "\n1. Calculate total sales\n2. Sales data \n3. Other communities";
 
       return $display;
   }
