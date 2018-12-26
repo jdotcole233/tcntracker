@@ -4,9 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
-  <title>TcnTracker - Welcome</title>
+  <meta name="description" content="Cashew platform. Value inclusion for all">
+  <title>Ton Tracker - Welcome</title>
   <!-- Favicon -->
   <link href="{{ asset('/assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -82,10 +81,18 @@
               <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
-              <i class="ni ni-user-run"></i>
-              <span>Logout</span>
-            </a>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                                                      <i class="ni ni-user-run"></i>
+
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
           </div>
         </li>
       </ul>

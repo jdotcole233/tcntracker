@@ -7,21 +7,28 @@ use App\Farmer;
 use App\Buyer;
 use App\Farmer_transaction;
 use App\Community_price;
+use Auth;
 
 
 class PagesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
-     $total_farmers = Farmer::all()->count();
-     $total_buyers = Buyer::where('companiescompany_id', 1)->count();
+     $total_farmers = Farmer::where('companiescompany_id', Auth::user()->companiescompany_id)->count();
+     $total_buyers = Buyer::where('companiescompany_id', Auth::user()->companiescompany_id)->count();
      $average_price=0.0;
-     $average_price_num = Community_price::where('companiescompany_id', 1)->count();
+     $average_price_num = Community_price::where('companiescompany_id', Auth::user()->companiescompany_id)->count();
       if ($average_price_num != 0){
-        $average_price_total = Community_price::where('companiescompany_id', 1)->sum('current_price');
+        $average_price_total = Community_price::where('companiescompany_id', Auth::user()->companiescompany_id)->sum('current_price');
         $average_price = $average_price_total / $average_price_num;
       }
      
-      $total_transactions = Farmer_transaction::where('companiescompany_id', 1)->sum('total_weight');
+      $total_transactions = Farmer_transaction::where('companiescompany_id', Auth::user()->companiescompany_id)->sum('total_weight');
     	return view("dashboard.index", compact('total_farmers','total_buyers', 'average_price', 'total_transactions'));
     }
     public function farmerProfile(){

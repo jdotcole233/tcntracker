@@ -25,7 +25,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Company Admin</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{App\Company::where('company_id', Auth::user()->companiescompany_id)->value('company_name')}}</span>
                 </div>
               </div>
             </a>
@@ -50,10 +50,18 @@
                 <span>Support</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
-                <i class="ni ni-user-run"></i>
-                <span>Logout</span>
-              </a>
+              <a class="dropdown-item" href="{{ route('logout') }}"
+
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                                                      <i class="ni ni-user-run"></i>
+
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
             </div>
           </li>
         </ul>
@@ -102,7 +110,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Current Price ($)</label>
+                        <label class="form-control-label" for="input-first-name">Current Price (GHC)</label>
                         <h3>{{$current_comm_price}}</h3>
                       </div>
                     </div>

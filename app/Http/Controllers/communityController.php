@@ -5,16 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Community;
 use App\Community_price;
+use Auth;
 
 class communityController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function register_community(Request $request){
         Community::create($request->all());
         return response()->json("Community Added successfully");
     }
 
     public function list_out_communities(){
-       $communities = Community::all();
+       $communities = Community::where('companiescompany_id', Auth::user()->companiescompany_id)->get();
        return response()->json($communities);
     }
 

@@ -150,6 +150,10 @@
         postData('POST','/update_current_price','#update_community_price_form');
     });
 
+    $('#company_button').click(function(){
+      postData('POST','/register_com','#company_form');
+    });
+
 
 
     function postData(method, url, form_data){

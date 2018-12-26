@@ -95,3 +95,6 @@ Route::post('/edit-forFarmerSale', 'farmerController@editSaleDetails');
 
 //ussd endpoint
 Route::post('/fussd_interact', 'ussdController@farmerapplicationcontrol');
+
+//log
+Route::post('/register_com', 'otherController@createCompanyAccount');

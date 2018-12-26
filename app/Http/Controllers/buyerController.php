@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Buyer;
 use App\Buyer_community;
+use Auth;
 
 class buyerController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function register_buyer(Request $request){
         $buyer_id = Buyer::create($request->all())->value('buyer_id');
         Buyer_community::create([
@@ -18,7 +27,7 @@ class buyerController extends Controller
     }
 
     public function list_out_buyers(){
-      $buyers = Buyer::all();
+      $buyers = Buyer::where('companiescompany_id', Auth::user()->companiescompany_id)->get();
       return response()->json($buyers);
     }
 

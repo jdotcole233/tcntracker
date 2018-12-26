@@ -7,11 +7,15 @@ use App\Farmer;
 use App\Farmer_transaction;
 use App\Community;
 use App\Community_price;
+use Auth;
 
 class farmerController extends Controller
 {
 
-    // private static ;
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function register_farmer(Request $request){
         Farmer::create($request->all());
@@ -19,13 +23,12 @@ class farmerController extends Controller
     }
 
     public function list_out_farmers(){
-      $farmers = Farmer::all();
+      $farmers = Farmer::where('companiescompany_id', Auth::user()->companiescompany_id)->get();
       return response()->json($farmers);
     }
 
     public function create_sale(Request $request){
         Farmer_transaction::create($request->all());
-
         return response()->json("Sale created successfully");
     }
 

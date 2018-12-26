@@ -25,7 +25,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Company Admin</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{App\Company::where('company_id', Auth::user()->companiescompany_id)->value('company_name')}}</span>
                 </div>
               </div>
             </a>
@@ -50,10 +50,18 @@
                 <span>Support</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
-                <i class="ni ni-user-run"></i>
-                <span>Logout</span>
-              </a>
+              <a class="dropdown-item" href="{{ route('logout') }}"
+
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                                                      <i class="ni ni-user-run"></i>
+
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
             </div>
           </li>
         </ul>
@@ -133,7 +141,7 @@
                     <div class="col-lg-6" style="display:none;">
                       <div class="form-group">
                         <label class="form-control-label" for="companiescompany_id"> Company ID</label>
-                        <input type="tel" id="companiescompany_id" name="companiescompany_id" class="form-control form-control-alternative" value="1">
+                        <input type="tel" id="companiescompany_id" name="companiescompany_id" class="form-control form-control-alternative" value="{{Auth::user()->companiescompany_id}}">
                       </div>
                     </div>
                   </div>

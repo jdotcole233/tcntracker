@@ -48,18 +48,18 @@
           </div>
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{ url('/dashboard') }}">
                 <i class="ni ni-planet"></i>
                 <span class="nav-link-inner--text">Dashboard</span>
               </a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{ url('/signup') }}">
                 <i class="ni ni-circle-08"></i>
                 <span class="nav-link-inner--text">Register</span>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{ url('/signin') }}">
                 <i class="ni ni-key-25"></i>

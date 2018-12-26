@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title>Ton Tracker - Sign up</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -16,6 +16,8 @@
   <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
+  <script src="{{ asset('/js/sweetalert2.all.min.js') }}"></script>
+
 </head>
 
 <body class="bg-default">
@@ -49,10 +51,10 @@
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="{{ url('/dashboard') }}">
+              <!-- <a class="nav-link nav-link-icon" href="{{ url('/dashboard') }}">
                 <i class="ni ni-planet"></i>
                 <span class="nav-link-inner--text">Dashboard</span>
-              </a>
+              </a> -->
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{ url('/signup') }}">
@@ -103,8 +105,8 @@
               <div class="text-center text-muted mb-4">
                 <small>Sign up with credentials</small>
               </div>
-              <form role="form" method="POST" action="{{ route('register') }}" >
-                  @csrf
+              <form role="form" method="POST" id="company_form" >
+               <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
@@ -163,7 +165,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input id="phone_name" placeholder="Phone Number" type="tel" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('name') }}" required autofocus>
+                    <input id="phone_number" placeholder="Phone Number" type="tel" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('name') }}" required autofocus>
                     @if ($errors->has('phone_name'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('phone_name') }}</strong>
@@ -184,7 +186,7 @@
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary mt-4">Create account</button>
+                  <button type="button" id="company_button" class="btn btn-primary mt-4">Create account</button>
                 </div>
               </form>
             </div>
@@ -225,6 +227,8 @@
   <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.0.0"></script>
+  <script type="text/javascript" src="{{asset('js/tcntrackerjs.js')}}"></script>
+
 </body>
 
 </html>
