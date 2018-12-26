@@ -128,7 +128,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="phone_number">Phone Number</label>
-                        <input type="tel" id="phone_number" name="phone_number" class="form-control form-control-alternative" placeholder="Enter phone number">
+                        <input type="tel" id="phone_number" name="phone_number" class="form-control form-control-alternative" placeholder="Example (23320000434)">
                       </div>
                     </div>
                   </div>

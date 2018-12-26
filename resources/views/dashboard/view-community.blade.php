@@ -103,7 +103,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Current Price ($)</label>
-                        <h3>{{DB::table('community_prices')->latest()->value('current_price')}}</h3>
+                        <h3>{{$current_comm_price}}</h3>
                       </div>
                     </div>
                   </div>

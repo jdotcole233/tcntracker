@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Farmer;
 use App\Buyer;
-use Farmer_transaction;
+use App\Farmer_transaction;
+use App\Community_price;
 
 
 class PagesController extends Controller
@@ -13,15 +14,15 @@ class PagesController extends Controller
     public function index(){
      $total_farmers = Farmer::all()->count();
      $total_buyers = Buyer::where('companiescompany_id', 1)->count();
-     // if ($total_farmers != null && $total_buyers != null){
-     //   $total_farmers = Farmer::where('communitiescommunity_id', 1)->count();
-     //   $total_buyers = Buyer::where('companiescompany_id', 1)->count();
-     // } else {
-     //   $total_farmers = 0;
-     //   $total_buyers = 0;
-     // }
-      //$total_transactions = Farmer_transaction::where('companiescompany_id', 1)->sum('total_weight');
-    	return view("dashboard.index", compact('total_farmers','total_buyers'));
+     $average_price=0.0;
+     $average_price_num = Community_price::where('companiescompany_id', 1)->count();
+      if ($average_price_num != 0){
+        $average_price_total = Community_price::where('companiescompany_id', 1)->sum('current_price');
+        $average_price = $average_price_total / $average_price_num;
+      }
+     
+      $total_transactions = Farmer_transaction::where('companiescompany_id', 1)->sum('total_weight');
+    	return view("dashboard.index", compact('total_farmers','total_buyers', 'average_price', 'total_transactions'));
     }
     public function farmerProfile(){
     	return view("dashboard.farmer-profile");

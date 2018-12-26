@@ -81,7 +81,6 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Full Name</th>
-                    <th scope="col">Location</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Action</th>

@@ -20,7 +20,8 @@ class communityController extends Controller
 
     public function list_community($id){
        $community = Community::where('community_id', $id)->first();
-       return view('dashboard.view-community', compact('community'));
+       $current_comm_price = Community_price::where('communitiescommunity_id', $id)->latest()->value('current_price');
+       return view('dashboard.view-community', compact('community','current_comm_price'));
     }
 
     public function editCommunity($id){

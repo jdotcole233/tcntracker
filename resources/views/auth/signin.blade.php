@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title>Ton Tracker - Dashboard</title>
   <!-- Favicon -->
   <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -94,29 +94,28 @@
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary shadow border-0">
             <div class="card-header bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
               <div class="btn-wrapper text-center">
-                <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
-                  <span class="btn-inner--text">Github</span>
-                </a>
-                <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
-                  <span class="btn-inner--text">Google</span>
-                </a>
+              <!-- Logo goes here -->
               </div>
             </div>
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <small>Sign in with credentials</small>
               </div>
-              <form role="form">
+              <form role="form" method="POST" action="{{ route('login') }}" >
+                 @csrf
                 <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input id="email" placeholder="Email goes here" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                   </div>
                 </div>
                 <div class="form-group">
@@ -124,7 +123,13 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input id="password" type="password" placeholder="Password goes here" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -134,7 +139,7 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
+                  <button type="submit" class="btn btn-primary my-4">Sign in</button>
                 </div>
               </form>
             </div>
