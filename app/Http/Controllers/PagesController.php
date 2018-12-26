@@ -69,11 +69,5 @@ class PagesController extends Controller
       return view("dashboard.add-price");
     }
 
-    public function signin(){
-    	return view("auth.signin");
-    }
-    public function signup(){
-    	return view("auth.signup");
-    }
 
 }

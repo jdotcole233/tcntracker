@@ -19,9 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/signin', 'PagesController@signin');
+Route::get('/signin', 'externalresourceController@signin');
 
-Route::get('/signup', 'PagesController@signup');
+Route::get('/companysignupregistration', 'externalresourceController@signup');
 
 Route::get('/dashboard', 'PagesController@index');
 
