@@ -95,7 +95,7 @@
           <div class="card bg-secondary shadow border-0">
             <div class="card-header bg-transparent pb-5">
               <div class="btn-wrapper text-center">
-              <!-- Logo goes here -->
+                  <center><img src="{{asset('assets/img/brand/tcntrackerPNG.png')}}" alt="Company logo" width="150px" height="50px"></center>
               </div>
             </div>
             <div class="card-body px-lg-5 py-lg-5">
@@ -148,9 +148,9 @@
             <div class="col-6">
               <a href="#" class="text-light"><small>Forgot password?</small></a>
             </div>
-            <div class="col-6 text-right">
+            <!-- <div class="col-6 text-right">
               <a href="{{ url('/signup') }}" class="text-light"><small>Create new account</small></a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
