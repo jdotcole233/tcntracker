@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/fussd_interact'
+        '/fussd_interact',
+        '/login'
     ];
 }
