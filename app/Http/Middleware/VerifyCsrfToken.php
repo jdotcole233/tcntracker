@@ -20,6 +20,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/fussd_interact',
-        'http://tontracker.com/login'
+        '/login'
     ];
 }
