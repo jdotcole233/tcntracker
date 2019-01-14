@@ -18,9 +18,6 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
 
-        if ($request->from == "mobiledevice"){
-            return response()->json("Welcome");
-        }
         if (Auth::guard($guard)->check()) {
             return redirect('/dashboard');
         }

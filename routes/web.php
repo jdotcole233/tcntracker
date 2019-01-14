@@ -98,3 +98,6 @@ Route::post('/fussd_interact', 'ussdController@farmerapplicationcontrol');
 
 //log
 Route::post('/register_com', 'otherController@createCompanyAccount');
+
+//Mobile request
+Route::post('/loginfrommobile', 'mobileAuthenticateController@handle');
