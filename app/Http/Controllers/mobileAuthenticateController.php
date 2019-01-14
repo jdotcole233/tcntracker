@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class mobileAuthenticateController extends Controller
 {
-    
+
     public function handle(Request $request){
 
 
-        return response()->json("Welcome");
+        return response()->json("Welcome to this site");
     }
 }

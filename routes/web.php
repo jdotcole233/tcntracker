@@ -101,3 +101,4 @@ Route::post('/register_com', 'otherController@createCompanyAccount');
 
 //Mobile request
 Route::post('/loginfrommobile', 'mobileAuthenticateController@handle');
+Route::post('/loginfrommobilecheck', 'mobileAuthenticateController@handle');
