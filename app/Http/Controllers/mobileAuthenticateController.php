@@ -27,14 +27,14 @@ class mobileAuthenticateController extends Controller
           $total_weight_bought = Farmer_transaction::where('buyersbuyer_id', $buyerID)->sum('total_weight');
           $current_price = Community_price::where('communitiescommunity_id', $buyerDetails->communitiescommunity_id)->latest()->value('current_price');
 
-        return response()->json([
-          "buyer_info" => $buyerDetails,
-          "total_farmers" => $total_farmers_registered,
-          "total_weight" => $total_weight_bought,
-          "current_price" => $current_price
-        ]);
+        // return response()->json([
+        //   "buyer_info" => $buyerDetails,
+        //   "total_farmers" => $total_farmers_registered,
+        //   "total_weight" => $total_weight_bought,
+        //   "current_price" => $current_price
+        // ]);
 
-        // return response()->json($buyerDetails);
+        return response()->json($buyerDetails);
       }
 
         return response()->json("null");
