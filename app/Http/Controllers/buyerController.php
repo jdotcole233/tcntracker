@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Buyer;
 use App\Buyer_community;
 use Auth;
+use App\User;
 
 class buyerController extends Controller
 {
@@ -18,9 +20,14 @@ class buyerController extends Controller
 
 
     public function register_buyer(Request $request){
-        $buyer_id = Buyer::create($request->all())->value('buyer_id');
+        $buyer_id = Buyer::create($request->all())->latest()->value('buyer_id');
         Buyer_community::create([
           'communitiescommunity_id' => $request->communitiescommunity_id,
+          'buyersbuyer_id' => $buyer_id
+        ]);
+        User::create([
+          'email'=> $request->buyer_email,
+          'password' => Hash::make('123456'),
           'buyersbuyer_id' => $buyer_id
         ]);
         return response()->json("Buyer added successfully");

@@ -145,6 +145,14 @@
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="phone_number">Email Address</label>
+                        <input type="tel" id="buyer_email" name="buyer_email" class="form-control form-control-alternative" placeholder="Enter email address" required>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
               </form>
