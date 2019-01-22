@@ -9,6 +9,9 @@ use App\Buyer_community;
 use App\Buyer_farmer_registration;
 use App\Community_price;
 use App\Farmer_transaction;
+use App\Community;
+use App\Farmer;
+use App\Buyer_farmer_registration;
 
 class mobileAuthenticateController extends Controller
 {
@@ -27,16 +30,47 @@ class mobileAuthenticateController extends Controller
           $total_weight_bought = Farmer_transaction::where('buyersbuyer_id', $buyerID)->sum('total_weight');
           $current_price = Community_price::where('communitiescommunity_id', $buyerDetails->communitiescommunity_id)->latest()->value('current_price');
 
-        // return response()->json([
-        //   "buyer_info" => $buyerDetails,
-        //   "total_farmers" => $total_farmers_registered,
-        //   "total_weight" => $total_weight_bought,
-        //   "current_price" => $current_price
-        // ]);
+        return response()->json([
+          "buyer_info" => $buyerDetails,
+          "total_farmers" => $total_farmers_registered,
+          "total_weight" => $total_weight_bought,
+          "current_price" => $current_price
+        ]);
 
-        return response()->json($buyerDetails);
+        // return response()->json($buyerDetails);
       }
 
         return response()->json("null");
+    }
+
+
+
+    public function mobileCommunityList(Request $request){
+        $communities = Community::where('companiescompany_id', $request->company_id)->get();
+        return response()->json(["community"=> $communities]);
+    }
+
+    public function registerFarmerFromMobileDevice(Request $request){
+
+        $farmer_id = Farmer::create([
+          "first_name" => $request->first_name,
+          "other_name" => $request->other_name,
+          "last_name" => $request->last_name,
+          "gender" => $request->gender,
+          "phone_number" => $request->phone_number,
+          "communitiescommunity_id" => $request->community_id,
+          "companiescompany_id" => $request->company_id,
+          "created_at" => $request->created_at,
+          "updated_at" => $request->updated_at
+
+        ])->latest()->value("farmer_id");
+
+        Buyer_farmer_registration::create([
+          "buyersbuyer_id" => $request->buyer_id;
+          "farmersfarmer_id" => $farmer_id
+        ]);
+
+
+        return response()->json(["response" => "SUCCESSFUL"]);
     }
 }

@@ -101,4 +101,8 @@ Route::post('/register_com', 'otherController@createCompanyAccount');
 
 //Mobile request
 Route::post('/loginfrommobile', 'mobileAuthenticateController@handle');
+Route::post('/communities', 'mobileAuthenticateController@mobileCommunityList');
 Route::post('/loginfrommobilecheck', 'mobileAuthenticateController@handle');
+
+//Mobile farmer registration
+Route::post('/registerFarmerFromMobile','mobileAuthenticateController@registerFarmerFromMobileDevice');

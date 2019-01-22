@@ -21,6 +21,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/fussd_interact',
         '/loginfrommobile',
-        '/someotherlink'
+        '/communities',
+        '/registerFarmerFromMobile'
     ];
 }

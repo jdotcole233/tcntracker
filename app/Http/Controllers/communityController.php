@@ -14,7 +14,7 @@ class communityController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function register_community(Request $request){
         Community::create($request->all());
         return response()->json("Community Added successfully");
@@ -67,5 +67,7 @@ class communityController extends Controller
 
         return response()->json("Updated successfully");
     }
+
+
 
 }
