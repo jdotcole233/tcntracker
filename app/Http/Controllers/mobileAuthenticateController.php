@@ -11,7 +11,6 @@ use App\Community_price;
 use App\Farmer_transaction;
 use App\Community;
 use App\Farmer;
-use App\Buyer_farmer_registration;
 
 class mobileAuthenticateController extends Controller
 {
@@ -61,12 +60,12 @@ class mobileAuthenticateController extends Controller
           "communitiescommunity_id" => $request->community_id,
           "companiescompany_id" => $request->company_id,
           "created_at" => $request->created_at,
-          "updated_at" => $request->updated_at
+          "updated_at" => $request->created_at
 
         ])->latest()->value("farmer_id");
 
         Buyer_farmer_registration::create([
-          "buyersbuyer_id" => $request->buyer_id;
+          "buyersbuyer_id" => $request->buyer_id,
           "farmersfarmer_id" => $farmer_id
         ]);
 
