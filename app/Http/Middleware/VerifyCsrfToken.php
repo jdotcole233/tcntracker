@@ -22,6 +22,7 @@ class VerifyCsrfToken extends Middleware
         '/fussd_interact',
         '/loginfrommobile',
         '/communities',
-        '/registerFarmerFromMobile'
+        '/registerFarmerFromMobile',
+        '/farmertransactions'
     ];
 }

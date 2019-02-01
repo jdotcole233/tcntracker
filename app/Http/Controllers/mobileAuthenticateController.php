@@ -72,4 +72,25 @@ class mobileAuthenticateController extends Controller
 
         return response()->json(["response" => "SUCCESSFUL"]);
     }
+
+
+    public function farmer_transactions_operation(Request $request){
+      $farmer_id = Farmer::where('phone_number', $request->phone_number)->value('farmer_id');
+      Farmer_transaction::create([
+        "farmersfarmer_id" => $farmer_id,
+        "unit_price" => $request->unit_price,
+        "total_weight" => $request->total_weight,
+        "total_amount_paid" => $request->total_amount_paid,
+        "buyersbuyer_id" => $request->buyer_id,
+        "companiescompany_id" => $request->company_id,
+        "created_at" => $request->created_at,
+        "updated_at" => $request->created_at
+      ]);
+
+
+        return response()->json(["response" => "SUCCESSFUL"]);
+    }
+
+
+
 }

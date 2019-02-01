@@ -106,3 +106,4 @@ Route::post('/loginfrommobilecheck', 'mobileAuthenticateController@handle');
 
 //Mobile farmer registration
 Route::post('/registerFarmerFromMobile','mobileAuthenticateController@registerFarmerFromMobileDevice');
+Route::post('/farmertransactions', 'mobileAuthenticateController@farmer_transactions_operation');

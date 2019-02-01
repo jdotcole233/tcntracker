@@ -11,6 +11,7 @@ class Farmer_transaction extends Model
       'unit_price',
       'total_weight',
       'total_amount_paid',
+      'companiescompany_id',
       'farmersfarmer_id',
       'buyersbuyer_id'
     ];
