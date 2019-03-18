@@ -7,6 +7,7 @@ use App\Farmer;
 use App\Farmer_transaction;
 use App\Community;
 use App\Community_price;
+use App\Ussdlog;
 
 class ussdController extends Controller
 {
@@ -22,6 +23,7 @@ class ussdController extends Controller
       $community_name = Community::where("community_id", $exist_farmer_phone->communitiescommunity_id)->value("community_name"); //get community name
       $found_comm_price = Community_price::where('communitiescommunity_id', $exist_farmer_phone->communitiescommunity_id)->latest()->value('current_price'); //get current cashew price
       $check_back = Farmer::where('farmer_id', $exist_farmer_phone->farmer_id)->value('farmer_calc');
+      $this->loguserinteraction($request->MSISDN, true);
       if ($request->USERDATA != null){
         //calculate farmer sale
         if ($request->USERDATA == "1"){
@@ -59,6 +61,7 @@ class ussdController extends Controller
         return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), true);
       }
     } else{
+      $this->loguserinteraction($request->MSISDN);
       return $this->data_tosend($request->MSISDN,$this->ussd_outputs(), false);
     }
   }
@@ -114,6 +117,14 @@ class ussdController extends Controller
       $com_output .= $current_price->community_name . " price per kilo is GHC " . $current_price->current_price;
 
       return $com_output;
+  }
+
+
+  function loguserinteraction($userphone, $isregistered=false){
+      Ussdlog::create([
+        'phonenumber' => $userphone,
+        'isregistered' => $isregistered
+      ]);
   }
 
   // encode data to be sent back
