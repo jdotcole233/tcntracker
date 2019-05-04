@@ -58,7 +58,7 @@ class farmerController extends Controller
     // Farmer sales
     public function farmerSales($id){
       $farmer_transactions = Farmer_transaction::where('farmersfarmer_id', $id)->get();
-      return view("dashboard.farmer-sales", compact('farmer_transactions'));
+      return view("dashboard.farmer-sales", compact('farmer_transactions','id'));
     }
 
     public function editSale($id){

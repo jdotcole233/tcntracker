@@ -7,7 +7,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ url('/farmers') }}">Precious Esi's Sales</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ url('/farmers') }}">{{App\Farmer::where('farmer_id', $id)->value('first_name') .' '.App\Farmer::where('farmer_id', $id)->value('last_name')}}'s Sales</a>
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -82,7 +82,7 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">Precious Esi's Sales</h3>
+              <h3 class="mb-0">{{App\Farmer::where('farmer_id', $id)->value('first_name') .' '.App\Farmer::where('farmer_id', $id)->value('last_name')}}'s Sales</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
@@ -116,7 +116,6 @@
                       </td>
                       <td>
                         <a href="{{ url('/edit-sale/'.$farmer_transaction->farmer_transactions_id) }}"><button type="button" class="btn btn-success">Edit</button>
-
                       </td>
 
                     </tr>
