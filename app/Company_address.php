@@ -13,5 +13,5 @@ class Company_address extends Model
       'country',
       'companiescompany_id'
 
-    ]
+    ];
 }

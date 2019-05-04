@@ -34,7 +34,10 @@ class buyerController extends Controller
     }
 
     public function list_out_buyers(){
-      $buyers = Buyer::where('companiescompany_id', Auth::user()->companiescompany_id)->get();
+      $buyers = Buyer::join('buyer_communities', 'buyer_id', 'buyersbuyer_id')
+      ->join('communities', 'community_id','communitiescommunity_id')
+      ->where('buyers.companiescompany_id', Auth::user()->companiescompany_id)->get();
+  
       return response()->json($buyers);
     }
 

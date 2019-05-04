@@ -118,6 +118,14 @@
                         </div>
                       </div>
                   </div>
+                  <div class="row" style="display:none;">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="farmer_id">Company ID</label>
+                          <input type="text" id="farmer_id" name="companiescompany_id" class="form-control form-control-alternative" value="{{Auth::user()->value('id')}}">
+                        </div>
+                      </div>
+                  </div>
                 </div>
 
               </form>

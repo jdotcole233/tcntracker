@@ -25,15 +25,16 @@
         postData('POST','/register_buyer','#create-buyer-forms');
     });
 
-    //getData('GET','/fetch_buyers', '#buyer_table tbody','<tr><th scope="row"><div class="media align-items-center"><div class="media-body"><span class="mb-0 text-sm">' + value.first_name + ' ' + value.other_name +' ' + value.last_name + '</span></div></div></th><td>' + value.location + '</td><td><span class="badge badge-dot mr-4">' + value.gender  +'</span></td><td>' + value.phone_number + '</td><td><a href="/edit-buyer"><button type="button" class="btn btn-success">Edit details</button></a></td></tr>');
+    // getData('GET','/fetch_buyers', '#buyer_table tbody','<tr><th scope="row"><div class="media align-items-center"><div class="media-body"><span class="mb-0 text-sm">' + value.first_name + ' ' + value.other_name +' ' + value.last_name + '</span></div></div></th><td>' + value.location + '</td><td><span class="badge badge-dot mr-4">' + value.gender  +'</span></td><td>' + value.phone_number + '</td><td><a href="/edit-buyer"><button type="button" class="btn btn-success">Edit details</button></a></td></tr>');
     $.ajax({
       type: 'GET',
       url:'/fetch_buyers',
       success: function(data){
          var buyer_table = $('#buyer_table tbody');
+         console.log(data);
          $.each(data, function(index, value){
-            //console.table(data);
-            buyer_table.append(`<tr><th scope="row"><div class="media align-items-center"><div class="media-body"><span class="mb-0 text-sm">${value.first_name} ${value.other_name} ${value.last_name}</span></div></div></th><td>${value.location}</td><td><span class="badge badge-dot mr-4">${value.gender}</span></td><td>${value.phone_number}</td><td><a href="/edit-buyer/${value.buyer_id}"><button type="button" class="btn btn-success">Edit details</button></a></td></tr>`);
+            // console.table(data);
+            buyer_table.append(`<tr><th scope="row"><div class="media align-items-center"><div class="media-body"><span class="mb-0 text-sm">${value.first_name}   ${value.last_name}</span></div></div></th><td>${value.community_name}</td><td><span class="badge badge-dot mr-4">${value.gender}</span></td><td>${value.phone_number}</td><td><a href="/edit-buyer/${value.buyer_id}"><button type="button" class="btn btn-success">Edit details</button></a></td></tr>`);
          });
       },
       error: function(err){
@@ -54,7 +55,7 @@
                 <th scope="row">
                   <div class="media align-items-center">
                     <div class="media-body">
-                      <span class="mb-0 text-sm">${value.first_name} ${value.other_name} ${value.last_name}</span>
+                      <span class="mb-0 text-sm">${value.first_name} ${value.last_name}</span>
                     </div>
                   </div>
                 </th>
@@ -77,7 +78,7 @@
                   <th scope="row">
                     <div class="media align-items-center">
                       <div class="media-body">
-                        <span class="mb-0 text-sm">${value.first_name} ${value.other_name} ${value.last_name}</span>
+                        <span class="mb-0 text-sm">${value.first_name}  ${value.last_name}</span>
                       </div>
                     </div>
                   </th>
