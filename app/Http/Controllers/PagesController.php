@@ -27,6 +27,7 @@ class PagesController extends Controller
         $average_price_total = Community_price::where('companiescompany_id', Auth::user()->companiescompany_id)->sum('current_price');
         $average_price = $average_price_total / $average_price_num;
       }
+      $average_price = round($average_price, 2);
      
       $total_transactions = Farmer_transaction::where('companiescompany_id', Auth::user()->companiescompany_id)->sum('total_weight');
     	return view("dashboard.index", compact('total_farmers','total_buyers', 'average_price', 'total_transactions'));
