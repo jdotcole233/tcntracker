@@ -20,6 +20,6 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "jquery-validation": "^1.19.0"
+        "jquery-validation": "^1.19.4"
     }
 }
